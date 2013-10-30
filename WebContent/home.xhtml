@@ -7,7 +7,17 @@
 <title>whiteit: the frontpage of the hsr</title>
 </head>
 <body>
-
-	<p:head>whiteit</p:head>
+	<div id="header">
+		<p:head>
+			<p:form>
+				<h1 style="float:left;">whiteit</h1>
+				<p:inputText value="#{loginBean.userName}"></p:inputText>
+				<p:inputSecret value="#{loginBean.password}"></p:inputSecret>
+				<p:commandButton value="Login" action="login"></p:commandButton>
+				<p:commandButton value="Register" action="register"></p:commandButton>
+			</p:form>
+			
+		</p:head>
+	</div>
 </body>
 </html>
