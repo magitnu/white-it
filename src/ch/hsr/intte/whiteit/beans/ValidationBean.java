@@ -1,7 +1,6 @@
 package ch.hsr.intte.whiteit.beans;
 
-public class ValidationBean {
-	
+public class ValidationBean extends BaseBean {
 	private String name;
 	private String passwort;
 
@@ -20,6 +19,5 @@ public class ValidationBean {
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
-
 }
 
