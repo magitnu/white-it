@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>#{title}</title>
+<link rel="stylesheet" type="text/css" href="/WhiteIt/css/Layout.css" />
+<link href='http://fonts.googleapis.com/css?family=Average+Sans'
+	rel='stylesheet' type='text/css'></link>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="headerLogo">
+				<h1>whiteit</h1>
+			</div>
+
+			<div id="headerMenu">
+				<ui:insert name="headerMenu"></ui:insert>
+			</div>
+		</div>
+
+		<ui:decorate template="subHeaderTemplate.xhtml">
+			<ui:define name="subHeaderImg">
+				<img src="/WhiteIt/img/cloud.png" alt="Cloud" height="80px"></img>
+			</ui:define>
+			<ui:define name="subHeaderDesc">
+				<h1>Submit a new Link.</h1>
+				<p>The students are waiting for it!</p>
+			</ui:define>
+			<ui:define name="subHeaderFields">
+				<form>
+					<input placeholder="Title"/><br /> <input placeholder="URL..."/><br /> <input type="submit" />
+				</form>
+			</ui:define>
+		</ui:decorate>
+		
+				<p>---</p>
+
+
+		<ui:decorate template="subHeaderTemplate.xhtml">
+			<ui:define name="subHeaderImg">
+				<img src="/WhiteIt/img/person.png" alt="Person" height="80px"></img>
+			</ui:define>
+			<ui:define name="subHeaderDesc">
+				<h1>Create a new User-Account.</h1>
+				<p>You only need a username and a password</p>
+			</ui:define>
+			<ui:define name="subHeaderFields">
+				<form>
+					<input /><br /> <input /><br /> <input /><br /> <input
+						type="submit" />
+				</form>
+			</ui:define>
+		</ui:decorate>
+		
+	<div id="content">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+	</div>
+</body>
+</html>

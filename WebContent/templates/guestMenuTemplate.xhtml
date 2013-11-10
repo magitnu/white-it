@@ -1,0 +1,18 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="headerMenu">
+		<div id="guestMenu">
+			<h:form>
+				<h:inputText value="#{loginBean.userName}"></h:inputText>
+				<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
+				<h:commandButton value="Login" action="login"></h:commandButton>
+				<h:commandButton value="Register" action="register"></h:commandButton>
+			</h:form>
+		</div>
+	</ui:define>
+
+</ui:composition>

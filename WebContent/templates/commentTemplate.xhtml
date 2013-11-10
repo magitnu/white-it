@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<div class="commentBox">
+
+		
+		<div class="numberOfVotes">
+			<img src="/WhiteIt/img/upVote.png" alt="upVote" height="25px"></img>
+			<h1><ui:insert name="numberOfVotes"></ui:insert></h1>
+			<img src="/WhiteIt/img/downVote.png" alt="downVote" height="25px"></img>
+		</div>
+
+		<div class="commentDescription">
+			<b><ui:insert name="commentDescription"></ui:insert></b>
+		</div>
+		
+		<div class="commentText">
+			<p><ui:insert name="commentText"></ui:insert></p>
+		</div>
+
+	</div>
+</ui:composition>

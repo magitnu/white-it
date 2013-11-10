@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ui:decorate template="./templates/guestMenuTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<p>---</p>
+
+		<ui:decorate template="./templates/linkTemplate.xhtml">
+			<ui:define name="numberOfVotes">122</ui:define>
+			<ui:define name="linkTitle">You are bad at entropy</ui:define>
+			<ui:define name="linkDescription">Submitted 2 hours ago by Manuel</ui:define>
+			<ui:define name="linkComments">
+				<a href="">2 Comments</a>
+			</ui:define>
+		</ui:decorate>
+
+		<br />
+		<img src="/WhiteIt/img/message.png" alt="message" height="45px"
+			style="float: left; margin-right: 5px;"></img>
+		<h1>2 Comments</h1>
+		<br />
+
+		<ui:decorate template="./templates/commentTemplate.xhtml">
+			<ui:define name="numberOfVotes">42</ui:define>
+			<ui:define name="commentDescription">Submitted 2 hours ago by Manuel</ui:define>
+			<ui:define name="commentText">a lot shorter :D</ui:define>
+		</ui:decorate>
+
+
+		<ui:decorate template="./templates/commentTemplate.xhtml">
+			<ui:define name="numberOfVotes">999</ui:define>
+			<ui:define name="commentDescription">Submitted 19 days ago by me</ui:define>
+			<ui:define name="commentText">Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</ui:define>
+		</ui:decorate>
+	</ui:define>
+
+</ui:decorate>
