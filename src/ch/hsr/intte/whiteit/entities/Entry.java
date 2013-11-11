@@ -1,17 +1,23 @@
 package ch.hsr.intte.whiteit.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public abstract class Entry extends BaseEntity{
 	private Date createdDate;
 	private int upVotes;
 	private int downVotes;
 	private User user;
-	private Entry belongsTo;
+	private Entry ratesEntry;
+	private List<Comment> ratedByComments;
 
 	Entry() {
 		super();
 		createdDate = new Date();
+		upVotes = 0;
+		downVotes = 0;
+		ratedByComments = new ArrayList<>();
 	}
 
 	Entry(Date createdDate, int upVotes, int downVotes, User user, Entry entry) {
@@ -20,7 +26,7 @@ public abstract class Entry extends BaseEntity{
 		this.upVotes = upVotes;
 		this.downVotes = downVotes;
 		this.setUser(user);
-		this.setBelongsTo(entry);
+		this.setRatesEntry(entry);
 	}
 
 	public Date getCreatedDate() {
@@ -31,27 +37,27 @@ public abstract class Entry extends BaseEntity{
 		this.createdDate = createdDate;
 	}
 
-	public int getPlusVotes() {
+	public int getUpVotes() {
 		return upVotes;
 	}
 
-	public void setPlusVotes(int upVotes) {
+	public void setUpVotes(int upVotes) {
 		this.upVotes = upVotes;
 	}
 
-	public int getMinusVotes() {
+	public int getDownVotes() {
 		return downVotes;
 	}
 
-	public void setMinusVotes(int downVotes) {
+	public void setDownVotes(int downVotes) {
 		this.downVotes = downVotes;
 	}
 
-	public int upVote() {
+	public int voteUp() {
 		return ++upVotes;
 	}
 
-	public int downVote() {
+	public int voteDown() {
 		return ++downVotes;
 	}
 
@@ -61,6 +67,30 @@ public abstract class Entry extends BaseEntity{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Entry getRatesEntry() {
+		return ratesEntry;
+	}
+
+	public void setRatesEntry(Entry ratesEntry) {
+		this.ratesEntry = ratesEntry;
+	}
+
+	public List<Comment> getRatedByComments() {
+		return ratedByComments;
+	}
+
+	public void setRatedByComments(List<Comment> ratedBy) {
+		this.ratedByComments = ratedBy;
+	}
+	
+	public void addRatedByComment(Comment ratedBy) {
+		this.ratedByComments.add(ratedBy);
+	}
+	
+	public void removeRatedByComment(Comment ratedBy) {
+		this.ratedByComments.remove(ratedBy);
 	}
 
 	@Override
@@ -100,14 +130,5 @@ public abstract class Entry extends BaseEntity{
 			return false;
 		return true;
 	}
-
-	public Entry getBelongsTo() {
-		return belongsTo;
-	}
-
-	public void setBelongsTo(Entry belongsTo) {
-		this.belongsTo = belongsTo;
-	}
-
 	
 }

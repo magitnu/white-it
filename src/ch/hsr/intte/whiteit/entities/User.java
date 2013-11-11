@@ -1,13 +1,9 @@
 package ch.hsr.intte.whiteit.entities;
 
-import java.util.HashSet;
 
 public class User extends BaseEntity{
 	private String username;
 	private String password;
-	/*private HashSet<Link> links;
-	private HashSet<Comment> comments;*/
-	
 	
 	public User(){
 		super();

@@ -1,16 +1,10 @@
 package ch.hsr.intte.whiteit.businesslogic;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import ch.hsr.intte.whiteit.entities.Comment;
@@ -22,6 +16,7 @@ public class EntityLogic extends Logic {
 	private Map<UUID, Link> links;
 	private Map<UUID, User> users;
 
+	//get all methods
 	public Collection<Comment> getAllComments() {
 		return comments.values();
 	}
@@ -32,6 +27,7 @@ public class EntityLogic extends Logic {
 		return users.values();
 	}
 
+	//get by id methods
 	public Comment getCommentById(UUID id) {
 		return comments.get(id);
 	}
@@ -40,6 +36,42 @@ public class EntityLogic extends Logic {
 	}
 	public User getUserById(UUID id) {
 		return users.get(id);
+	}
+
+	//add new entity methods
+	public void addUser(User u) {
+		users.put(u.getId(), u);
+	}
+	public void addLink(Link l) {
+		links.put(l.getId(), l);
+	}
+	public void addComment(Comment c) {
+		c.getRatesEntry().addRatedByComment(c);
+		comments.put(c.getId(), c);
+	}
+
+	//remove methods (by Id or by Entity)
+	public User removeUser(User u) {
+		return removeUser(u.getId());
+	}
+	public User removeUser(UUID id) {
+		return users.remove(id);
+	}
+
+	public Comment removeComment(Comment u) {
+		return removeComment(u.getId());
+	}
+	public Comment removeComment(UUID id) {
+		Comment c = comments.remove(id);
+		c.getRatesEntry().removeRatedByComment(c);
+		return c;
+	}
+
+	public Link removeLink(User u) {
+		return removeLink(u.getId());
+	}
+	public Link removeLink(UUID id) {
+		return links.remove(id);
 	}
 	
 	EntityLogic() {

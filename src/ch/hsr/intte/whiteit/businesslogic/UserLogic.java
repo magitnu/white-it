@@ -6,12 +6,25 @@ public class UserLogic extends Logic {
 	UserLogic() {}
 
 	public boolean login(String username, String password) {
-		return true;
+		User u = getUserByUsername(username);
+		return u == null ? false : u.checkPassword(password);
 	}
 	
-	public User register(String username, String password) {
+	public User getUserByUsername(String username) {
+		for(User u : Logic.entity().getAllUsers()) {
+			if(u.getUsername().equalsIgnoreCase(username)) {
+				return u;
+			}
+		}
 		return null;
-		//TODO: create user
-		//return new User()
+	}
+	
+	public User createUser(String username, String password) {
+		if(getUserByUsername(username) != null) {
+			return null;
+		}
+		User u = new User(username, password);
+		Logic.entity().addUser(u);
+		return u;
 	}
 }

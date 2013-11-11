@@ -30,6 +30,6 @@ public class UserBean extends BaseBean {
 	}
 	
 	public User register(String username, String password) {
-		return Logic.user().register(username, password);
+		return Logic.user().createUser(username, password);
 	}
 }
