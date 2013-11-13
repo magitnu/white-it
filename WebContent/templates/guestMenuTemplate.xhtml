@@ -9,9 +9,10 @@
 			<h:form>
 				<h:inputText value="#{loginBean.userName}"></h:inputText>
 				<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
-				<h:commandButton value="Login" action="login"></h:commandButton>
-				<h:commandButton value="Register" action="register"></h:commandButton>
+				<h:commandButton value="Login" onclick="displayRegisterBox()"></h:commandButton>
+				
 			</h:form>
+			<h:commandButton value="Register" onclick="displayRegisterBox()"></h:commandButton>
 		</div>
 	</ui:define>
 

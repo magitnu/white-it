@@ -50,6 +50,11 @@
 	
 	
 /* SubHeader CSS */	
+
+	#registerBox, #submitLinkBox{
+		display:none;
+	}
+	
 	.subHeader{
 		background-color:lightgrey;
 		height:250px;
