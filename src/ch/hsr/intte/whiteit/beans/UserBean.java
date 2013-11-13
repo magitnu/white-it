@@ -4,32 +4,34 @@ import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.User;
 
 public class UserBean extends BaseBean {
-	private String username;
-	private String password;
-
+	private User currentUser = null;
+	
 	public String getName() {
-		return username;
+		return currentUser != null ? currentUser.getUsername() : "";
 	}
 
-	public void setName(String name) {
-		this.username = name;
-	}
-
-	public String getPasswort() {
-		return password;
-	}
-
-	public void setPasswort(String passwort) {
-		this.password = passwort;
-	}
-	
 	public boolean login(String username, String password) {
-		this.username = username;
-		this.password = password;
-		return Logic.user().login(this.username, this.password);
+		if(Logic.user().login(username, password)) {
+			this.currentUser = Logic.user().getUserByUsername(username);
+			return true;
+		}
+		return false;
 	}
 	
-	public User register(String username, String password) {
-		return Logic.user().createUser(username, password);
+	public boolean register(String username, String password) {
+		User user = Logic.user().createUser(username, password);
+		if(user == null)
+			return false;
+		
+		currentUser = user;
+		return true;
+	}
+	
+	public boolean isLoggedIn() {
+		return currentUser != null;
+	}
+	
+	public void logOut() {
+		this.currentUser = null;
 	}
 }
