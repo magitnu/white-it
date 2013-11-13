@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ui:decorate template="./templates/guestMenuTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<p>---</p>
+		<ui:repeat value="#{dynamicDataLoadGraph.releaseData}" var="entry">
+			<ui:decorate template="./templates/linkTemplate.xhtml">
+				<ui:define name="numberOfVotes">122</ui:define>
+				<ui:define name="linkTitle">You are bad at entropy</ui:define>
+				<ui:define name="linkDescription">Submitted 2 hours ago by Manuel</ui:define>
+				<ui:define name="linkComments">
+					<a href="">2 Comments</a>
+				</ui:define>
+			</ui:decorate>
+		</ui:repeat>
+	</ui:define>
+
+</ui:decorate>
