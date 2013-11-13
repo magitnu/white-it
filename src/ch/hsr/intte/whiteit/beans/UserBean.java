@@ -18,6 +18,8 @@ public class UserBean extends BaseBean {
 		return false;
 	}
 	
+	
+	
 	public boolean register(String username, String password) {
 		User user = Logic.user().createUser(username, password);
 		if(user == null)
