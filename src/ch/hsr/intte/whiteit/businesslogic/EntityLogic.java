@@ -2,6 +2,7 @@ package ch.hsr.intte.whiteit.businesslogic;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,13 +19,13 @@ public class EntityLogic extends Logic {
 
 	//get all methods
 	public Collection<Comment> getAllComments() {
-		return comments.values();
+		return new ArrayList<Comment>(comments.values());
 	}
 	public Collection<Link> getAllLinks() {
-		return links.values();
+		return new ArrayList<Link>(links.values());
 	}
 	public Collection<User> getAllUsers() {
-		return users.values();
+		return new ArrayList<User>(users.values());
 	}
 
 	//get by id methods

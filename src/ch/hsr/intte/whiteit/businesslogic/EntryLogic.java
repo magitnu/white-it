@@ -16,7 +16,12 @@ public class EntryLogic  extends Logic{
 	}
 	
 	public Comment rateEntry(Entry ratedEntry, User user, String text) {
-		return createComment(ratedEntry, user, text);
+		Comment c = new Comment();
+		c.setText(text);
+		c.setUser(user);
+		c.setRatesEntry(ratedEntry);
+		Logic.entity().addComment(c);
+		return c;
 	}
 
 	public Link createLink(User user, String url, String title) {
@@ -26,14 +31,6 @@ public class EntryLogic  extends Logic{
 		l.setUser(user);
 		Logic.entity().addLink(l);
 		return l;
-	}
-	public Comment createComment(Entry ratedEntry, User user, String text) {
-		Comment c = new Comment();
-		c.setText(text);
-		c.setUser(user);
-		c.setRatesEntry(ratedEntry);
-		Logic.entity().addComment(c);
-		return c;
 	}
 	
 	public List<Link> getAllLinks() {
