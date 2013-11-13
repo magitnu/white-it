@@ -9,11 +9,11 @@
 
 	<ui:define name="content">
 		<p>---</p>
-		<ui:repeat value="#{dynamicDataLoadGraph.releaseData}" var="entry">
+		<ui:repeat value="#{entryBean.allLinks}" var="entry">
 			<ui:decorate template="./templates/linkTemplate.xhtml">
-				<ui:define name="numberOfVotes">122</ui:define>
-				<ui:define name="linkTitle">You are bad at entropy</ui:define>
-				<ui:define name="linkDescription">Submitted 2 hours ago by Manuel</ui:define>
+				<ui:define name="numberOfVotes">#{entry.score}</ui:define>
+				<ui:define name="linkTitle">#{entry.title}</ui:define>
+				<ui:define name="linkDescription">#{entry.url}</ui:define>
 				<ui:define name="linkComments">
 					<a href="">2 Comments</a>
 				</ui:define>

@@ -44,6 +44,10 @@ public abstract class Entry extends BaseEntity{
 	public void setUpVotes(int upVotes) {
 		this.upVotes = upVotes;
 	}
+	
+	public int getScore() {
+		return upVotes - downVotes;
+	}
 
 	public int getDownVotes() {
 		return downVotes;
