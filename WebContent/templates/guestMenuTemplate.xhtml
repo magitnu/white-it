@@ -6,9 +6,9 @@
 
 	<ui:define name="headerMenu">
 		<div id="guestMenu">
-			<h:form>
-				<h:inputText id="username"></h:inputText>
-				<h:inputSecret id="password"></h:inputSecret>
+			<h:form id="form">
+				<h:inputText id="username" value="#{userBean.username}"></h:inputText>
+				<h:inputSecret id="password" value="#{userBean.password}"></h:inputSecret>
 				<h:commandButton value="Login" id="login" action="#{userBean.login}" />
 			</h:form>
 			<h:commandButton value="Register" onclick="displayRegisterBox()"></h:commandButton>

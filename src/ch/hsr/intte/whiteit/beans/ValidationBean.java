@@ -19,6 +19,7 @@ public class ValidationBean extends BaseBean {
 		
 		return true;
 	}
+	
 	public boolean validateNewLink() {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		Object linkText = params.get("linkText");
