@@ -1,0 +1,35 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<ui:define name="headerMenu">
+		<c:choose>
+			<c:when test="#{userBean.loggedIn}">
+				<div id="userMenu">
+					<div id="submitButton">
+						<h:commandButton value="Submit New Link" onclick="displaySubmitLinkBox()" />
+						<h:commandButton value="Logout" id="logout" action="#{userBean.logOut}" />
+					</div>
+		
+					<div id="userOptions">
+						hi <h:outputText value="#{userBean.name}"></h:outputText>
+					</div>
+				</div>
+			</c:when>
+			
+			<c:otherwise>
+				<div id="guestMenu">
+					<h:form id="form">
+						<p:inputText id="username" value="#{userBean.username}" />
+						<p:password id="password" value="#{userBean.password}" />
+						<p:commandButton value="login" id="login" action="#{userBean.login}" />
+					</h:form>
+					<h:commandButton value="Register" onclick="displayRegisterBox()" />
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+</ui:composition>

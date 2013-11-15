@@ -1,8 +1,5 @@
 package ch.hsr.intte.whiteit.beans;
 
-import java.io.IOException;
-import javax.faces.context.FacesContext;
-
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.User;
 
@@ -19,6 +16,10 @@ public class UserBean extends BaseBean {
 		this.username = username;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -30,30 +31,18 @@ public class UserBean extends BaseBean {
 	public void login() {
 		String username = this.username;
 		String password = this.password;
-		try {
-			if(Logic.user().login(username, password)) {
-				this.currentUser = Logic.user().getUserByUsername(username);
-				FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/faces/login.xhtml");
-				return;
-			} else  {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/faces/allLinks.xhtml");
-			}
-		} catch (IOException e) {
-		}
+		if(Logic.user().login(username, password)) {
+			this.currentUser = Logic.user().getUserByUsername(username);
+		} 
 	}
 	
 	
 	
-	public boolean register() {
+	public void register() {
 		String username = this.username;
 		String password = this.password;
 		
-		User user = Logic.user().createUser(username, password);
-		if(user == null)
-			return false;
-		
-		currentUser = user;
-		return true;
+		currentUser = Logic.user().createUser(username, password);
 	}
 	
 	public boolean isLoggedIn() {
