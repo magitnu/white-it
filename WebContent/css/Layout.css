@@ -135,6 +135,19 @@ a:hover.upVote  {
 	background-image: url(/WhiteIt/img/upVote.png); 
 }
 
+	.replyBox {
+		background-color: lightgrey;
+		width:100%;
+		float:left;
+		margin-bottom: 30px;
+	}
+	
+	.replyBox textarea {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 400px;
+		height:130px;
+	}
 .downVote {
 	background-image: url(/WhiteIt/img/downVoteBlank.png); 
 	background-repeat: no-repeat; 
