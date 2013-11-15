@@ -8,8 +8,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="content">
-		<p>---</p>
-
 		<ui:decorate template="./templates/linkTemplate.xhtml">
 			<ui:define name="numberOfVotes">122</ui:define>
 			<ui:define name="linkTitle">You are bad at entropy</ui:define>
@@ -24,6 +22,14 @@
 			style="float: left; margin-right: 5px;"></img>
 		<h1>2 Comments</h1>
 		<br />
+		<div class="replyBox">
+			<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+				style="float: left; margin-right: 5px;"></img>
+			<h:form>
+			<h:inputTextarea></h:inputTextarea>
+			<h:commandButton style="margin-left: -75px;" value="Comment"></h:commandButton>			
+			</h:form>
+		</div>
 
 		<ui:decorate template="./templates/commentTemplate.xhtml">
 			<ui:define name="numberOfVotes">42</ui:define>
@@ -35,7 +41,7 @@
 		<ui:decorate template="./templates/commentTemplate.xhtml">
 			<ui:define name="numberOfVotes">999</ui:define>
 			<ui:define name="commentDescription">Submitted 19 days ago by me</ui:define>
-			<ui:define name="commentText">Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</ui:define>
+			<ui:define name="commentText">Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</ui:define>
 		</ui:decorate>
 	</ui:define>
 
