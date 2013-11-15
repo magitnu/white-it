@@ -23,10 +23,11 @@ public class UserBean extends BaseBean {
 		try {
 			if(Logic.user().login(username, password)) {
 				this.currentUser = Logic.user().getUserByUsername(username);
-				FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/login.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/faces/login.xhtml");
 				return;
+			} else  {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/faces/templates/guestMenuTemplate.xhtml");
 			}
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/guestMenuTemplate.xhtml");
 		} catch (IOException e) {
 		}
 	}

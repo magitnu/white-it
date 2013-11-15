@@ -7,11 +7,11 @@
 	<ui:define name="headerMenu">
 		<div id="userMenu">
 				<div id="submitButton">
-					<h:Button value="Submit New Link" onclick="displaySubmitLinkBox()"></h:Button>
+					<h:commandButton value="Submit New Link" onclick="displaySubmitLinkBox()"></h:commandButton>
 			</div>
 				
 				<div id="userOptions">
-					hi <h:outputLabel value="#{loginBean.userName}"></h:outputLabel>
+					hi <h:outputText value="#{userBean.name}"></h:outputText>
 				</div>
 		</div>
 	</ui:define>
