@@ -1,5 +1,10 @@
 package ch.hsr.intte.whiteit.beans;
 
+import java.io.IOException;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.User;
 
@@ -7,6 +12,7 @@ public class UserBean extends BaseBean {
 	private User currentUser = null;
 	public String username;
 	public String password;
+	private String passwordMatch;
 	
 	public String getUsername() {
 		return username;
@@ -41,8 +47,13 @@ public class UserBean extends BaseBean {
 	public void register() {
 		String username = this.username;
 		String password = this.password;
-		
-		currentUser = Logic.user().createUser(username, password);
+		String passwordMatch = this.passwordMatch;
+		if(password.equals(passwordMatch)) {
+			currentUser = Logic.user().createUser(username, password);
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect(getRequestUri());
+			} catch (IOException e) {}
+		}
 	}
 	
 	public boolean isLoggedIn() {
@@ -51,5 +62,24 @@ public class UserBean extends BaseBean {
 	
 	public void logOut() {
 		this.currentUser = null;
+	}
+
+	public String getPasswordMatch() {
+		return passwordMatch;
+	}
+
+	public void setPasswordMatch(String passwordMatch) {
+		this.passwordMatch = passwordMatch;
+	}
+	
+	private String getRequestUri() {
+	    Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();
+	    if(request instanceof HttpServletRequest)
+	    {
+	            return ((HttpServletRequest) request).getRequestURL().toString();
+	    }else
+	    {
+	        return "";
+	    }
 	}
 }
