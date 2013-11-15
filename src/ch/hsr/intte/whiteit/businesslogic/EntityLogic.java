@@ -20,7 +20,7 @@ public class EntityLogic extends Logic {
 	//get all methods
 	public Collection<Comment> getAllComments() {
 		return new ArrayList<Comment>(comments.values());
-	}
+	}	
 	public Collection<Link> getAllLinks() {
 		return new ArrayList<Link>(links.values());
 	}
