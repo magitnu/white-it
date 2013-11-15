@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
@@ -11,7 +11,9 @@
 <link href='http://fonts.googleapis.com/css?family=Average+Sans'
 	rel='stylesheet' type='text/css'></link>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-
+<script type="text/javascript" src="http://www.primefaces.org/showcase/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=4.0"></script>
+<script type="text/javascript" src="http://www.primefaces.org/showcase/javax.faces.resource/jquery/jquery-plugins.js.jsf?ln=primefaces&amp;v=4.0"/>
+<script type="text/javascript" src="http://www.primefaces.org/showcase/javax.faces.resource/primefaces.js.jsf?ln=primefaces&amp;v=4.0"/>
 <script>
 	function displaySubmitLinkBox() {
 		document.getElementById("registerBox").style.display = 'none';
@@ -52,7 +54,9 @@
 				<ui:insert name="headerMenu"></ui:insert>
 			</div>
 		</div>
-
+		<div id="messagesBlock">
+			<p:messages id="messages" autoUpdate="true" />  
+ 		</div>
 		<div id="submitLinkBox">
 			<ui:decorate template="subHeaderTemplate.xhtml">
 				<ui:define name="subHeaderImg">
@@ -80,10 +84,17 @@
 					<p>You only need a username and a password</p>
 				</ui:define>
 				<ui:define name="subHeaderFields">
-					<form>
-						<input /><br /> <input /><br /> <input /><br /> <input
-							type="submit" />
-					</form>
+					<h:form id="register">  
+        				<h:panelGrid columns="2" id="matchGrid">   
+	        				<h:outputLabel for="username" value="Username" />
+							<p:inputText id="username" value="#{userBean.username}" label="Username" requiredMessage="true"/>
+        					<h:outputLabel for="password" value="Password" />
+							<p:password id="password" value="#{userBean.password}" feedback="true" required="true" match="passwordMatch" label="Passwort"/>
+        					<h:outputLabel for="passwordMatch" value="Repeat" />
+							<p:password id="passwordMatch" value="#{userBean.passwordMatch}" required="true" label="Passwort"/>
+						</h:panelGrid>
+						<p:commandButton id="register" value="Register" action="#{userBean.register}"/>
+					</h:form>
 				</ui:define>
 			</ui:decorate>
 		</div>
@@ -91,7 +102,6 @@
 		<div id="content">
 			<ui:insert name="content"></ui:insert>
 		</div>
-
 	</div>
 </h:body>
-</html>
+</h:html>
