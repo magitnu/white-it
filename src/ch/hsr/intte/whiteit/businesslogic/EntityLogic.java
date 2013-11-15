@@ -87,8 +87,8 @@ public class EntityLogic extends Logic {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 		try {
 			User u1 = new User("mobrist", "abc$123");
-			User u2 = new User("mscheub", "abc$123");
-			User u3 = new User("fschaef", "abc$123");
+			User u2 = new User("mscheube", "abc$123");
+			User u3 = new User("fschaefe", "abc$123");
 
 			Link l1 = new Link(sdf.parse("02.08.2013 08:15:49"), 15, 24, u1, "This is why I have to miss some school days.", "http://9gag.com/gag/av052Nb");
 			Link l2 = new Link(sdf.parse("24.07.2013 16:46:01"), 18, 9, u2, "Now That's What I Call a Sheep Dog!", "http://9gag.com/gag/azbMmzN");
