@@ -5,7 +5,8 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 	<ui:define name="content">
 		<ui:decorate template="./templates/linkTemplate.xhtml">
@@ -22,14 +23,19 @@
 			style="float: left; margin-right: 5px;"></img>
 		<h1>2 Comments</h1>
 		<br />
-		<div class="replyBox">
-			<img src="/WhiteIt/img/message.png" alt="message" height="85px"
-				style="float: left; margin-right: 5px;"></img>
-			<h:form>
-			<h:inputTextarea></h:inputTextarea>
-			<h:commandButton style="margin-left: -75px;" value="Comment"></h:commandButton>			
-			</h:form>
-		</div>
+
+		<c:choose>
+			<c:when test="#{userBean.loggedIn}">
+				<div class="replyBox">
+					<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+						style="float: left; margin-right: 5px;"></img>
+					<h:form>
+						<h:inputTextarea></h:inputTextarea>
+						<h:commandButton style="margin-left: -75px;" value="Comment"></h:commandButton>
+					</h:form>
+				</div>
+			</c:when>
+		</c:choose>
 
 		<ui:decorate template="./templates/commentTemplate.xhtml">
 			<ui:define name="numberOfVotes">42</ui:define>

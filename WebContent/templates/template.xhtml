@@ -36,7 +36,12 @@
 	}
 
 	function displayCommentBox(commentElement) {
-		commentElement.nextElementSibling.style.display = 'block';
+		if (commentElement.nextElementSibling.style.display != 'block'){
+			commentElement.nextElementSibling.style.display = 'block';
+		} else {
+			commentElement.nextElementSibling.style.display = 'none';
+		}
+		
 	}
 </script>
 
