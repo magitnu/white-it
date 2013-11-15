@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html">
 	<div class="commentBox">
 
 		
@@ -16,6 +17,17 @@
 		
 		<div class="commentText">
 			<p><ui:insert name="commentText"></ui:insert></p>
+			<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float:left; margin-right:5px;"></img>
+			<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
+			
+			<div class="replyBox" style="display:none">
+			<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+				style="float: left; margin-right: 5px;"></img>
+			<h:form>
+			<h:inputTextarea></h:inputTextarea>
+			<h:commandButton style="margin-left: -75px;" value="Comment"></h:commandButton>			
+			</h:form>
+			</div>
 		</div>
 
 	</div>
