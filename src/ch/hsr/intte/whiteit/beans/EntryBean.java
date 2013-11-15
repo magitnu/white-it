@@ -2,6 +2,8 @@ package ch.hsr.intte.whiteit.beans;
 
 import java.util.List;
 
+import javax.faces.event.AjaxBehaviorEvent;
+
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
 import ch.hsr.intte.whiteit.entities.Entry;
@@ -9,6 +11,7 @@ import ch.hsr.intte.whiteit.entities.Link;
 import ch.hsr.intte.whiteit.entities.User;
 
 public class EntryBean  extends BaseBean{
+	
 	public int voteUp(Entry e) {
 		return Logic.entry().voteUp(e);
 	}

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -18,13 +19,13 @@ public class EntityLogic extends Logic {
 	private Map<UUID, User> users;
 
 	//get all methods
-	public Collection<Comment> getAllComments() {
+	public List<Comment> getAllComments() {
 		return new ArrayList<Comment>(comments.values());
 	}	
-	public Collection<Link> getAllLinks() {
+	public List<Link> getAllLinks() {
 		return new ArrayList<Link>(links.values());
 	}
-	public Collection<User> getAllUsers() {
+	public List<User> getAllUsers() {
 		return new ArrayList<User>(users.values());
 	}
 

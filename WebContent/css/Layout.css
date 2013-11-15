@@ -1,125 +1,166 @@
 /* Default CSS */
-	body {
-		margin: 0;
-		padding: 0;
-		font-family: 'Average Sans', sans-serif;
-	}
-	
-	#content{
-		padding: 10px 0 0 40px;
-	}
-	
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Average Sans', sans-serif;
+}
+
+#content {
+	padding: 10px 0 0 40px;
+}
+
+/* Link formating CSS */
+a {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #D15600;
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
 /* Header CSS */
 
-	/* Containers */
-	#header {
-		float:left;
-		background-color:grey;
-		color:white;
-		width:100%;
-	}
-	
-	
-	#headerLogo{
-		float:left;
-		width:150px;
-		margin-left:15px;
-	}
-	
-	#headerMenu{
-		margin-header:30px;
-	}
-	
-	#headerMenu {
-	padding-top:10px;
-	}
-	#guestMenu, #userOptions{
-		padding-right:150px;
-		float:right;
-	}
-	
-	#submitButton{
-	float:left;
-	}
+/* Containers */
+#header {
+	float: left;
+	background-color: grey;
+	color: white;
+	width: 100%;
+}
 
-	
-	#userOptions {
-		float:right;
-	}
-	
-	
-	
-/* SubHeader CSS */	
+#headerLogo {
+	float: left;
+	width: 150px;
+	margin-left: 15px;
+}
 
-	#registerBox, #submitLinkBox{
-		display:none;
-	}
-	
-	.subHeader{
-		background-color:lightgrey;
-		height:250px;
-		width:100%;
-		float:left;
-		padding: 10px 0 10px 50px;		
-	}
-	
-	.subHeader > div {
-		float: left;
-		margin-top:30px;
-		height:200px;
-	}
-	
-	.subHeaderImg {
-	}
-	
-	.subHeaderDesc {
-		margin-left: 20px;
-	}
-	
-	
-	.subHeaderFields {
-		margin-left: 40px;
-	}
-	
-	.subHeaderFields input{
-		width: 400px;
-		height: 30px;
-		float:left;
-		margin-top: 5px;
-		padding-left: 5px;
-		font-size: 18px;
-	}
+#headerMenu {
+	margin-header: 30px;
+}
 
+#headerMenu {
+	padding-top: 10px;
+}
+
+#guestMenu,#userOptions {
+	padding-right: 150px;
+	float: right;
+}
+
+#submitButton {
+	float: left;
+}
+
+#userOptions {
+	float: right;
+}
+
+/* SubHeader CSS */
+#registerBox,#submitLinkBox {
+	display: none;
+}
+
+.subHeader {
+	background-color: lightgrey;
+	height: 250px;
+	width: 100%;
+	float: left;
+	padding: 10px 0 10px 50px;
+}
+
+.subHeader>div {
+	float: left;
+	margin-top: 30px;
+	height: 200px;
+}
+
+.subHeaderImg {
+	
+}
+
+.subHeaderDesc {
+	margin-left: 20px;
+}
+
+.subHeaderFields {
+	margin-left: 40px;
+}
+
+.subHeaderFields input {
+	width: 400px;
+	height: 30px;
+	float: left;
+	margin-top: 5px;
+	padding-left: 5px;
+	font-size: 18px;
+}
 
 /* Links/Comments*/
+.numberOfVotes {
+	float: left;
+	margin-right: 15px;
+	width: 60px;
+}
 
+.upVote {
+	background-image: url(/WhiteIt/img/upVoteBlank.png); 
+	background-repeat: no-repeat; 
+	background-position: center;
+	background-size: 25px;
+	display: block;
+	height: 25px;
+}
+a:hover.upVote  {
+	background-image: url(/WhiteIt/img/upVote.png); 
+}
 
-	.numberOfVotes {
-		float:left;
-		margin-right: 15px;
-		width:60px;
-	}
-	
-	.numberOfVotes img{
-		margin-left:13px;
-	}
-	
-	.commentBox, .linkbox{
+.downVote {
+	background-image: url(/WhiteIt/img/downVoteBlank.png); 
+	background-repeat: no-repeat; 
+	background-position: center;
+	background-size: 25px;
+	display: block;
+	height: 25px;
+}
+a:hover.downVote  {
+	background-image: url(/WhiteIt/img/downVote.png); 
+}
+
+.commentBox,.linkBox {
 	margin-left: 60px;
 	margin-bottom: 30px;
 	min-height: 90px;
 	padding-top: 15px;
-	}
-	
+}
+
+.score {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+}
+
 /* Elements */
+h1 {
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
 
-
-	h1 {
-		margin-top:0px;
-		margin-bottom: 3px;
-	}
-	
-	p {
-		margin:0px;
-		font-size: large;
-	}
+p {
+	margin: 0px;
+	font-size: large;
+}

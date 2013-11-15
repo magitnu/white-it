@@ -4,16 +4,28 @@
 <ui:decorate template="./templates/menuTemplate.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="content">
-		<p>---</p>
 		<ui:repeat value="#{entryBean.allLinks}" var="entry">
 			<ui:decorate template="./templates/linkTemplate.xhtml">
-				<ui:define name="numberOfVotes">#{entry.score}</ui:define>
+				<h:form>
+					<h:commandLink styleClass="upVote">
+						<f:ajax event="click" listener="#{entryBean.voteUp(entry)}"
+							render="numberOfVotes" />
+					</h:commandLink>
+					<h:outputText styleClass="score" id="numberOfVotes"
+						value="#{entry.score}" />
+					<h:commandLink styleClass="upVote">
+						<f:ajax event="click" listener="#{entryBean.voteDown(entry)}"
+							render="numberOfVotes" />
+					</h:commandLink>
+				</h:form>
+
 				<ui:define name="linkTitle">#{entry.title}</ui:define>
-				<ui:define name="linkDescription">#{entry.url}</ui:define>
+				<ui:define name="linkUrl">#{entry.url}</ui:define>
 				<ui:define name="linkComments">
 					<a href="">2 Comments</a>
 				</ui:define>
