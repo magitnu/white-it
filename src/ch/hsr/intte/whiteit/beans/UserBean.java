@@ -1,5 +1,6 @@
 package ch.hsr.intte.whiteit.beans;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
@@ -14,16 +15,20 @@ public class UserBean extends BaseBean {
 		return currentUser != null ? currentUser.getUsername() : "";
 	}
 
-	public boolean login(/*String username, String password*/) {
+	public void login(/*String username, String password*/) {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String username = params.get("username");
 		String password = params.get("password");
 
-		if(Logic.user().login(username, password)) {
-			this.currentUser = Logic.user().getUserByUsername(username);
-			return true;
+		try {
+			if(Logic.user().login(username, password)) {
+				this.currentUser = Logic.user().getUserByUsername(username);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/login.xhtml");
+				return;
+			}
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/guestMenuTemplate.xhtml");
+		} catch (IOException e) {
 		}
-		return false;
 	}
 	
 	
