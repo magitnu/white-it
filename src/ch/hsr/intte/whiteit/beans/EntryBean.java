@@ -22,13 +22,15 @@ public class EntryBean  extends BaseBean{
 	public List<Link> getAllLinks() {
 		return Logic.entry().getAllLinks();
 	}
-	public List<Comment> getCommentsByLink(Link link) {
-		return Logic.entry().getCommentsByEntry(link);
+	public List<Comment> getCommentsByEntry(Entry entry) {
+		return Logic.entry().getCommentsByEntry(entry);
+	}
+	public int getCommentCountByEntry(Entry entry) {
+		return Logic.entry().getCommentsByEntry(entry).size();
 	}
 	public Comment rateEntry(Entry ratedEntry, User user, String text) {
 		return Logic.entry().rateEntry(ratedEntry, user, text);
 	}
-
 	public Link createLink(User user, String url, String title) {
 		return Logic.entry().createLink(user, url, title);
 	}

@@ -25,10 +25,9 @@
 						</h:commandLink>
 					</h:form>
 				</ui:define>
-				<ui:define name="linkTitle">#{entry.title}</ui:define>
-				<ui:define name="linkUrl">#{entry.url}</ui:define>
+				<ui:define name="link"><a href="#{entry.url}" target="_blank">#{entry.title}</a></ui:define>
 				<ui:define name="linkComments">
-					<a href="">2 Comments</a>
+					<a href="linkDetail.xhtml?id=#{entry.id}">#{entryBean.getCommentCountByEntry(entry)} Comments</a>
 				</ui:define>
 			</ui:decorate>
 		</ui:repeat>

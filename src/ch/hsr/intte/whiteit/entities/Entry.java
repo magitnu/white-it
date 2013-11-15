@@ -27,6 +27,7 @@ public abstract class Entry extends BaseEntity{
 		this.downVotes = downVotes;
 		this.setUser(user);
 		this.setRatesEntry(entry);
+		ratedByComments = new ArrayList<>();
 	}
 
 	public Date getCreatedDate() {
