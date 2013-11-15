@@ -11,7 +11,9 @@
 				<div id="userMenu">
 					<div id="submitButton">
 						<h:commandButton value="Submit New Link" onclick="displaySubmitLinkBox()" />
-						<h:commandButton value="Logout" id="logout" action="#{userBean.logOut}" />
+						<h:form id="formLogout" style="display:inline;">
+							<h:commandButton value="Logout" id="logout" action="#{userBean.logOut}" />
+						</h:form>
 					</div>
 		
 					<div id="userOptions">
@@ -22,7 +24,7 @@
 			
 			<c:otherwise>
 				<div id="guestMenu">
-					<h:form id="form">
+					<h:form id="formLogin">
 						<p:inputText id="username" value="#{userBean.username}" />
 						<p:password id="password" value="#{userBean.password}" />
 						<p:commandButton value="login" id="login" action="#{userBean.login}" />
