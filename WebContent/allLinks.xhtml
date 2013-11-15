@@ -11,19 +11,20 @@
 	<ui:define name="content">
 		<ui:repeat value="#{entryBean.allLinks}" var="entry">
 			<ui:decorate template="./templates/linkTemplate.xhtml">
-				<h:form>
-					<h:commandLink styleClass="upVote">
-						<f:ajax event="click" listener="#{entryBean.voteUp(entry)}"
-							render="numberOfVotes" />
-					</h:commandLink>
-					<h:outputText styleClass="score" id="numberOfVotes"
-						value="#{entry.score}" />
-					<h:commandLink styleClass="upVote">
-						<f:ajax event="click" listener="#{entryBean.voteDown(entry)}"
-							render="numberOfVotes" />
-					</h:commandLink>
-				</h:form>
-
+				<ui:define name="votesAndScore">
+					<h:form>
+						<h:commandLink styleClass="upVote">
+							<f:ajax event="click" listener="#{entryBean.voteUp(entry)}"
+								render="numberOfVotes" />
+						</h:commandLink>
+						<h:outputText styleClass="score" id="numberOfVotes"
+							value="#{entry.score}" />
+						<h:commandLink styleClass="downVote">
+							<f:ajax event="click" listener="#{entryBean.voteDown(entry)}"
+								render="numberOfVotes" />
+						</h:commandLink>
+					</h:form>
+				</ui:define>
 				<ui:define name="linkTitle">#{entry.title}</ui:define>
 				<ui:define name="linkUrl">#{entry.url}</ui:define>
 				<ui:define name="linkComments">

@@ -2,16 +2,17 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
-	
-	<div class="linkBox">
 
+	<div class="linkBox">
+		<div class="votesAndScore">
+			<ui:insert name="votesAndScore"></ui:insert>
+		</div>
 		<div class="linkTitle">
 			<h1>
 				<a href="http://www.google.ch" target="_blank"><ui:insert
 						name="linkTitle"></ui:insert></a>
 			</h1>
 		</div>
-
 		<div class="linkComments">
 			<img src="/WhiteIt/img/message.png" alt="message" height="20px"
 				style="float: left; margin-right: 5px;"></img>
