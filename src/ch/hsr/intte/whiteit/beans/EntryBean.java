@@ -1,7 +1,10 @@
 package ch.hsr.intte.whiteit.beans;
 
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import ch.hsr.intte.whiteit.businesslogic.Logic;
@@ -33,5 +36,10 @@ public class EntryBean  extends BaseBean{
 	}
 	public Link createLink(User user, String url, String title) {
 		return Logic.entry().createLink(user, url, title);
+	}
+	public Link getLinkById() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+		return Logic.entity().getLinkById(UUID.fromString(paramMap.get("id")));
 	}
 }
