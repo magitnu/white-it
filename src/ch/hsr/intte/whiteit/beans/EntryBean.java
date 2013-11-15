@@ -13,6 +13,7 @@ import ch.hsr.intte.whiteit.entities.User;
 public class EntryBean  extends BaseBean{
 	
 	public int voteUp(Entry e) {
+		System.out.println("Upvoted"+((Link)e).getTitle());
 		return Logic.entry().voteUp(e);
 	}
 	public int voteDown(Entry e) {
