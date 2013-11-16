@@ -28,8 +28,9 @@
 						<p:inputText id="username" value="#{userBean.username}" />
 						<p:password id="password" value="#{userBean.password}" />
 						<p:commandButton value="login" id="login" action="#{userBean.login}" />
+						<p:commandButton value="Register" onclick="displayRegisterBox()" />
 					</h:form>
-					<h:commandButton value="Register" onclick="displayRegisterBox()" />
+					
 				</div>
 			</c:otherwise>
 		</c:choose>

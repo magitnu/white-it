@@ -45,12 +45,17 @@
 				<div class="replyBox">
 					<img src="/WhiteIt/img/message.png" alt="message" height="85px"
 						style="float: left; margin-right: 5px;"></img>
-					<h:form>
-						<h:inputTextarea></h:inputTextarea>
-						<h:commandButton style="margin-left: -75px;" value="Comment"></h:commandButton>
-					</h:form>
+						<h:form>
+							<h:inputTextarea id="commentText" value="#{entryBean.commentText}"></h:inputTextarea>
+							<h:commandButton id="postComment" style="margin-left: -75px;" value="Comment" action="#{entryBean.createComment}">
+								<f:setPropertyActionListener target="#{entryBean.commentEntry}" value="entry.id" />
+								<f:setPropertyActionListener target="#{entryBean.commentText}" value="#{userBean.username}" />
+								</h:commandButton>
+						</h:form>
 				</div>
 			</c:when>
+			
+			
 		</c:choose>		
 	¨		#{userBean.resetLeftMargin()}
             <ui:include src="recursiveComments.xhtml">

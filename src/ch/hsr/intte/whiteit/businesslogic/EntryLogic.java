@@ -1,5 +1,6 @@
 package ch.hsr.intte.whiteit.businesslogic;
 
+import java.util.Date;
 import java.util.List;
 
 import ch.hsr.intte.whiteit.entities.Comment;
@@ -31,6 +32,19 @@ public class EntryLogic  extends Logic{
 		l.setUser(user);
 		Logic.entity().addLink(l);
 		return l;
+	}
+	
+	public Comment createComment(User user, Entry entry, String text) {
+		System.out.println("inside creating Comment");
+		Comment c = new Comment();
+		c.setCreatedDate(new Date());
+		c.setDownVotes(0);
+		c.setUpVotes(0);
+		c.setUser(user);
+		c.setText(text);
+		Logic.entity().addComment(c);
+		entry.addRatedByComment(c);
+		return c;
 	}
 	
 	public List<Link> getAllLinks() {

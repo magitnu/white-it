@@ -26,16 +26,18 @@
 	</c:if>
 
 	<c:choose>
-	<c:when test="#{comment.hasComments}">
-		#{userBean.raiseLeftMargin()}
-		<c:forEach items="#{comment.ratedByComments}" var="comment">
-			<ui:include src="recursiveComments.xhtml" />
-		</c:forEach>
+		<c:when test="#{comment.hasComments}">
+			<c:if test="#{comment.instanceOfComment}">
+			#{userBean.raiseLeftMargin()}
+		</c:if>
+			<c:forEach items="#{comment.ratedByComments}" var="comment">
+				<ui:include src="recursiveComments.xhtml" />
+			</c:forEach>
 		#{userBean.resetLeftMargin()}
 	</c:when>
-	<c:otherwise>
-		
-	</c:otherwise>
+		<c:otherwise>
+
+		</c:otherwise>
 	</c:choose>
 
 </ui:composition>

@@ -11,7 +11,10 @@ public class UserBean extends BaseBean {
 	public String username;
 	public String password;
 	private String passwordMatch;
-	public Integer leftMargin=-60;
+	
+//	Folgendes braucht es fuer Comments. Sollen wir das in ein eigenes Bean tun?
+	public Integer leftMargin=0;
+	public String commentText;
 	
 	public String getUsername() {
 		return username;
@@ -98,7 +101,7 @@ public class UserBean extends BaseBean {
 	}
 	
 	public void resetLeftMargin(){
-		leftMargin = -60;
+		leftMargin = 0;
 	}
 	
 	public void raiseLeftMargin(){
