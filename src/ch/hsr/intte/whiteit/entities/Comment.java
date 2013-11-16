@@ -13,6 +13,7 @@ public class Comment extends Entry {
 			String text) {
 		super(createdDate, upVotes, downVotes, user, entry);
 		this.setText(text);
+		entry.addRatedByComment((Comment) this);
 	}
 
 	public String getText() {

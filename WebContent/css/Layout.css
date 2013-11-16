@@ -161,8 +161,11 @@ a:hover.downVote  {
 	background-image: url(/WhiteIt/img/downVote.png); 
 }
 
-.commentBox,.linkBox {
+.linkBox {
 	margin-left: 60px;
+}
+
+.commentBox,.linkBox {
 	margin-bottom: 30px;
 	min-height: 90px;
 	padding-top: 15px;

@@ -8,10 +8,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-	
-	<ui:param name="entry" value="#{entryBean.getLinkById()}" />
-	
+
+
 	<ui:define name="content">
+
+		<ui:param name="entry" value="#{entryBean.getLinkById()}" />
+
 		<ui:decorate template="./templates/linkTemplate.xhtml">
 			<ui:define name="votesAndScore">
 				<h:form>
@@ -35,7 +37,7 @@
 		<br />
 		<img src="/WhiteIt/img/message.png" alt="message" height="45px"
 			style="float: left; margin-right: 5px;"></img>
-		<h1>2 Comments</h1>
+		<h1>#{entryBean.getCommentCountByEntry(entry)} Comments</h1>
 		<br />
 
 		<c:choose>
@@ -49,20 +51,12 @@
 					</h:form>
 				</div>
 			</c:when>
-		</c:choose>
+		</c:choose>		
+	¨		#{userBean.resetLeftMargin()}
+            <ui:include src="recursiveComments.xhtml">
+                <ui:param name="comment" value="#{entryBean.getLinkById()}" />
+            </ui:include>
 
-		<ui:decorate template="./templates/commentTemplate.xhtml">
-			<ui:define name="numberOfVotes">42</ui:define>
-			<ui:define name="commentDescription">Submitted 2 hours ago by Manuel</ui:define>
-			<ui:define name="commentText">a lot shorter :D</ui:define>
-		</ui:decorate>
-
-
-		<ui:decorate template="./templates/commentTemplate.xhtml">
-			<ui:define name="numberOfVotes">999</ui:define>
-			<ui:define name="commentDescription">Submitted 19 days ago by me</ui:define>
-			<ui:define name="commentText">Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr,Whoa what the hell! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</ui:define>
-		</ui:decorate>
 	</ui:define>
 
 </ui:decorate>

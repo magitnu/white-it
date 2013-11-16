@@ -6,12 +6,8 @@
 	<div class="commentBox">
 
 
-		<div class="numberOfVotes">
-			<img src="/WhiteIt/img/upVote.png" alt="upVote" height="25px"></img>
-			<h1>
-				<ui:insert name="numberOfVotes"></ui:insert>
-			</h1>
-			<img src="/WhiteIt/img/downVote.png" alt="downVote" height="25px"></img>
+		<div class="votesAndScore" style="margin-left: #{userBean.leftMargin}px">
+			<ui:insert name="votesAndScore"></ui:insert>
 		</div>
 
 		<div class="commentDescription">

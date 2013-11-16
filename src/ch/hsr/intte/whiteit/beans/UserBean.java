@@ -11,6 +11,7 @@ public class UserBean extends BaseBean {
 	public String username;
 	public String password;
 	private String passwordMatch;
+	public Integer leftMargin=-60;
 	
 	public String getUsername() {
 		return username;
@@ -85,5 +86,22 @@ public class UserBean extends BaseBean {
 
 	public void setPasswordMatch(String passwordMatch) {
 		this.passwordMatch = passwordMatch;
+	}
+	
+
+	public Integer getLeftMargin() {
+		return leftMargin;
+	}
+
+	public void setLeftMargin(Integer leftMargin) {
+		this.leftMargin = leftMargin;
+	}
+	
+	public void resetLeftMargin(){
+		leftMargin = -60;
+	}
+	
+	public void raiseLeftMargin(){
+		leftMargin += 60;
 	}
 }

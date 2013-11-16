@@ -1,0 +1,41 @@
+<ui:composition lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+
+	<c:if test="#{comment.instanceOfComment}">
+		<ui:decorate template="./templates/commentTemplate.xhtml">
+			<ui:define name="votesAndScore">
+				<h:form>
+					<h:commandLink styleClass="upVote">
+						<f:ajax event="click" listener="#{entryBean.voteUp(comment)}" render="numberOfVotes" />
+					</h:commandLink>
+					<h:outputText styleClass="score" id="numberOfVotes" value="#{comment.score}" />
+					<h:commandLink styleClass="downVote">
+						<f:ajax event="click" listener="#{entryBean.voteDown(comment)}" render="numberOfVotes" />
+					</h:commandLink>
+				</h:form>
+			</ui:define>
+			<ui:define name="commentDescription"> #{comment.createdString}</ui:define>
+			<ui:define name="commentText"> #{comment.text}</ui:define>
+		</ui:decorate>
+	</c:if>
+
+	<c:choose>
+	<c:when test="#{comment.hasComments}">
+		#{userBean.raiseLeftMargin()}
+		<c:forEach items="#{comment.ratedByComments}" var="comment">
+			<ui:include src="recursiveComments.xhtml" />
+		</c:forEach>
+		#{userBean.resetLeftMargin()}
+	</c:when>
+	<c:otherwise>
+		
+	</c:otherwise>
+	</c:choose>
+
+</ui:composition>

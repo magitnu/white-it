@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
@@ -41,5 +40,11 @@ public class EntryBean  extends BaseBean{
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
 		return Logic.entity().getLinkById(UUID.fromString(paramMap.get("id")));
+	}
+	
+	public Comment getCommentById() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+		return Logic.entity().getCommentById(UUID.fromString(paramMap.get("id")));
 	}
 }

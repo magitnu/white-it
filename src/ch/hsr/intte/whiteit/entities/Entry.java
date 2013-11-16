@@ -37,6 +37,10 @@ public abstract class Entry extends BaseEntity{
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+	
+	public String getCreatedString(){
+		return "Submitted on" + createdDate + " by " + user.getUsername();
+	}
 
 	public int getUpVotes() {
 		return upVotes;
@@ -85,6 +89,7 @@ public abstract class Entry extends BaseEntity{
 	public List<Comment> getRatedByComments() {
 		return ratedByComments;
 	}
+	
 
 	public void setRatedByComments(List<Comment> ratedBy) {
 		this.ratedByComments = ratedBy;
@@ -96,6 +101,14 @@ public abstract class Entry extends BaseEntity{
 	
 	public void removeRatedByComment(Comment ratedBy) {
 		this.ratedByComments.remove(ratedBy);
+	}
+	
+	public boolean isHasComments(){
+		return ratedByComments.size() > 0;
+	}
+	
+	public boolean isInstanceOfComment(){
+		return  this instanceof Comment;
 	}
 
 	@Override

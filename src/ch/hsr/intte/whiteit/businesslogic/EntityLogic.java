@@ -103,9 +103,13 @@ public class EntityLogic extends Logic {
 			Comment c5 = new Comment(sdf.parse("26.07.2013 16:46:01"), 3, 3, u2, l2, "Don't get it");
 			Comment c6 = new Comment(sdf.parse("27.07.2013 16:46:01"), 7, 5, u3, c5, "Well, you have no feelings then");
 
-			Comment c7 = new Comment(sdf.parse("14.09.2013 13:27:33"), 9, 7, u1, l3, "A moonwalking cat");
-			Comment c9 = new Comment(sdf.parse("14.09.2013 13:27:33"), 7, 3, u3, l3, "I want one too");
-			Comment c8 = new Comment(sdf.parse("14.09.2013 13:27:33"), 2, 6, u2, c9, "Get to the pet store");
+			Comment c7 = new Comment(sdf.parse("14.09.2013 13:27:33"), 9, 7, u1, l3, "Level 1 - A moonwalking cat");
+			Comment c9 = new Comment(sdf.parse("14.09.2013 13:27:33"), 7, 3, u3, l3, "Level 1 - I want one too");
+			Comment c8 = new Comment(sdf.parse("14.09.2013 13:27:33"), 2, 6, u2, c9, "Level 2 - Get to the pet store");
+			Comment c11 = new Comment(sdf.parse("14.09.2013 13:27:33"), 2, 6, u2, c9, "Level 2 - Yes, go there");
+			Comment c12 = new Comment(sdf.parse("14.09.2013 13:27:33"), 2, 6, u2, c11, "Level 3 - Why should I go there");
+			Comment c10 = new Comment(sdf.parse("14.09.2013 13:27:33"), 9, 7, u1, l3, "A walkmooning cat");
+			
 
 			users.put(u1.getId(), u1);
 			users.put(u2.getId(), u2);
@@ -124,7 +128,9 @@ public class EntityLogic extends Logic {
 			comments.put(c7.getId(), c7);
 			comments.put(c8.getId(), c8);
 			comments.put(c9.getId(), c9);
-			
+			comments.put(c10.getId(), c10);
+			comments.put(c11.getId(), c11);
+			comments.put(c12.getId(), c12);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
