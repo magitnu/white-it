@@ -29,18 +29,14 @@
 						<img src="/WhiteIt/img/message.png" alt="message" height="85px"
 							style="float: left; margin-right: 5px;"></img>
 							
-<!-- 						<h:form>
-							<h:inputTextarea id="commentText" value="#{entryBean.commentText}"></h:inputTextarea>
-							<p:commandButton id="postComment" style="margin-left: -75px;" value="Comment" action="entryBean.createComment">
+<!-- Hier kann alles abgeändert und gelöscht werden. Bei mir funktionierte die Übergabe des Entries nie... -->
+						<h:inputTextarea value="#{entryBean.commentText}"></h:inputTextarea>
+							<p:commandButton style="margin-left: -75px;" value="Comment" action="entryBean.createComment">
 								<f:setPropertyActionListener target="#{entryBean.commentEntry}" value="delete" />
 								<f:setPropertyActionListener target="#{entryBean.commentText}" value="#{userBean.username}" />
 							</p:commandButton>
-						</h:form> -->
 						
-						
-						
-						
-						
+
 					</div>
 				</c:when>
 			</c:choose>

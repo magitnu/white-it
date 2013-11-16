@@ -39,25 +39,26 @@
 			style="float: left; margin-right: 5px;"></img>
 		<h1>#{entryBean.getCommentCountByEntry(entry)} Comments</h1>
 		<br />
-
-		<c:choose>
-			<c:when test="#{userBean.loggedIn}">
+	
+<!-- 		<c:choose>
+			<c:when test="#{userBean.loggedIn}"> -->
 				<div class="replyBox">
 					<img src="/WhiteIt/img/message.png" alt="message" height="85px"
 						style="float: left; margin-right: 5px;"></img>
-						<h:form>
-							<h:inputTextarea id="commentText" value="#{entryBean.commentText}"></h:inputTextarea>
-							<h:commandButton id="postComment" style="margin-left: -75px;" value="Comment" action="#{entryBean.createComment}">
-								<f:setPropertyActionListener target="#{entryBean.commentEntry}" value="entry.id" />
-								<f:setPropertyActionListener target="#{entryBean.commentText}" value="#{userBean.username}" />
-								</h:commandButton>
-						</h:form>
+					<h:form>
+						<p>#{entry.id}</p>
+							<h:form>
+					
+					<h:commandButton value="Testbutton" action="#{entryBean.Comment(entry)}">
+					    <f:ajax execute="@form" render="@none" />
+					</h:commandButton>
+				</h:form>
+					</h:form>
+
 				</div>
-			</c:when>
-			
-			
-		</c:choose>		
-	¨		#{userBean.resetLeftMargin()}
+		<!-- 	</c:when>
+		</c:choose>	 -->	
+			#{userBean.resetLeftMargin()}
             <ui:include src="recursiveComments.xhtml">
                 <ui:param name="comment" value="#{entryBean.getLinkById()}" />
             </ui:include>
