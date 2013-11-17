@@ -5,16 +5,6 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>sessionBean</managed-bean-name>
-		<managed-bean-class>ch.hsr.intte.whiteit.beans.SessionBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>validationBean</managed-bean-name>
-		<managed-bean-class>ch.hsr.intte.whiteit.beans.ValidationBean</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
 		<managed-bean-name>entryBean</managed-bean-name>
 		<managed-bean-class>ch.hsr.intte.whiteit.beans.EntryBean</managed-bean-class>
 		<managed-bean-scope>none</managed-bean-scope>

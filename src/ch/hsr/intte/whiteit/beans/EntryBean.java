@@ -8,7 +8,11 @@ import java.util.UUID;
 
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.facelets.FaceletContext;
 
+import com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.Param;
+
+import ch.hsr.intte.whiteit.businesslogic.Helper;
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
 import ch.hsr.intte.whiteit.entities.Entry;
@@ -24,9 +28,12 @@ public class EntryBean extends BaseBean {
 	
 	private UUID getRequestId() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext()
-				.getRequestParameterMap();
-		return UUID.fromString(paramMap.get("id"));
+		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+		try {
+			return UUID.fromString(paramMap.get("id"));
+		} catch(Exception e) {
+			return null;
+		}
 	}
 	
 	private UUID getIdFromString(String id){
@@ -77,14 +84,26 @@ public class EntryBean extends BaseBean {
 		this.commentText = commentText;
 	}
 
-	public Comment rateEntry(Entry ratedEntry, User user, String text) {
-		return Logic.entry().rateEntry(ratedEntry, user, text);
+	public Comment rateEntry(/*Entry ratedEntry, User user, String text*/) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+		User user = Logic.user().getUserByUsername(paramMap.get("user"));
+		Entry ratedEntry = Logic.entity().getEntryById(UUID.fromString(paramMap.get("ratedEntry")));
+		return Logic.entry().rateEntry(ratedEntry, user, getCommentText());
 	}
 
 	public Link createLink(User user, String url, String title) {
 		return Logic.entry().createLink(user, url, title);
 	}
 
+	public void showEntry(String entryId) {
+		String uri = Helper.getRequestUrl();
+		uri += (uri.contains("?") ? "&" : "?") + "id=" + entryId;
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(uri);
+		} catch (IOException e) {
+		}
+	}
 	
 	public void createComment(){
 		// Das Problem ist dass der commandButton die Seite aktualisiert und den Parameter ?id=7..... entfernt

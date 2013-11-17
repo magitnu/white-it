@@ -8,8 +8,8 @@ import ch.hsr.intte.whiteit.entities.User;
 
 public class UserBean extends BaseBean {
 	private User currentUser = null;
-	public String username;
-	public String password;
+	private String username;
+	private String password;
 	private String passwordMatch;
 	
 //	Folgendes braucht es fuer Comments. Sollen wir das in ein eigenes Bean tun?
@@ -33,22 +33,20 @@ public class UserBean extends BaseBean {
 	}
 
 	public String getName() {
-		return currentUser != null ? currentUser.getUsername() : "";
+		return getCurrentUser() != null ? getCurrentUser().getUsername() : "";
 	}
 
 	public void login() {
 		String username = this.username;
 		String password = this.password;
 		if(Logic.user().login(username, password)) {
-			this.currentUser = Logic.user().getUserByUsername(username);
+			this.setCurrentUser(Logic.user().getUserByUsername(username));
 			Helper.doPostback();
 			Helper.addUserMessage("Logged in", "User successfully logged in", FacesMessage.SEVERITY_WARN);
 		} else {
 			Helper.addUserMessage("Couldn't log in", "Username and password did not match", FacesMessage.SEVERITY_WARN);
 		}
 	}
-	
-	
 	
 	public void register() {
 		String username = this.username;
@@ -65,7 +63,7 @@ public class UserBean extends BaseBean {
 		String password = this.password;
 		String passwordMatch = this.passwordMatch;
 		if(password.equals(passwordMatch)) {
-			currentUser = Logic.user().createUser(username, password);
+			setCurrentUser(Logic.user().createUser(username, password));
 			Helper.doPostback();
 			Helper.addUserMessage("Registered", "User successfully registered", FacesMessage.SEVERITY_INFO);
 		} else {
@@ -74,11 +72,11 @@ public class UserBean extends BaseBean {
 	}
 	
 	public boolean isLoggedIn() {
-		return currentUser != null;
+		return getCurrentUser() != null;
 	}
 	
 	public void logOut() {
-		this.currentUser = null;
+		this.setCurrentUser(null);
 		Helper.doPostback();
 		Helper.addUserMessage("Logged out", "User successfully logged out", FacesMessage.SEVERITY_INFO);
 	}
@@ -106,5 +104,13 @@ public class UserBean extends BaseBean {
 	
 	public void raiseLeftMargin(){
 		leftMargin += 60;
+	}
+
+	public User getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
 	}
 }

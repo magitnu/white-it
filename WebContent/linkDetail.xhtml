@@ -17,15 +17,12 @@
 				<h:form name="form">
 					<h:commandLink styleClass="upVote" update=":form">
 						<f:param name="id" value="#{entry.id}" />
-						<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
-							render="numberOfVotes" />
+						<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}" render="numberOfVotes" />
 					</h:commandLink>
-					<h:outputText styleClass="score" id="numberOfVotes"
-						value="#{entry.score}" />
+					<h:outputText styleClass="score" id="numberOfVotes" value="#{entry.score}" />
 					<h:commandLink styleClass="downVote">
 						<f:param name="id" value="#{entry.id}" />
-						<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
-							render="numberOfVotes" />
+						<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}" render="numberOfVotes" />
 					</h:commandLink>
 				</h:form>
 			</ui:define>
@@ -34,31 +31,29 @@
 			</ui:define>
 		</ui:decorate>
 		<br />
-		<img src="/WhiteIt/img/message.png" alt="message" height="45px"
-			style="float: left; margin-right: 5px;"></img>
-		<h1>
-			<h:outputText
-				value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" />
-		</h1>
+		<img src="/WhiteIt/img/message.png" alt="message" height="45px" style="float: left; margin-right: 5px;" /> 
+		<h:outputText value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" />
+
 		<br />
+		<c:if test="#{userBean.loggedIn}">
+			<div class="replyBox">
+				<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
+				<h:form>
+					<p:inputTextarea value="${entryBean.commentText}" />
+					
+					<h:commandLink value="Comment" action="${entryBean.rateEntry}">
+						<f:param name="id" value="#{param['id']} " />
+						<f:param name="ratedEntry" value="#{entry.id}"/>
+						<f:param name="user" value="#{userBean.username}"/>
+						
+					</h:commandLink>
+				</h:form>
 
-		<!-- 		<c:choose>
-			<c:when test="#{userBean.loggedIn}"> -->
-		<div class="replyBox">
-			<img src="/WhiteIt/img/message.png" alt="message" height="85px"
-				style="float: left; margin-right: 5px;"></img>
-
-			<h:form action="#{commentBean.createComment}" method="post">
-				<h:inputTextarea id="text" value="#{commentBean.text}"></h:inputTextarea>
-				<h:button>Senden</h:button>
-			</h:form>
-
-		</div>
-		<!-- 	</c:when>
-		</c:choose>	 -->	
-			#{userBean.resetLeftMargin()}
-            <ui:include src="recursiveComments.xhtml">
-			<ui:param name="comment" value="#{entryBean.getLinkById()}" />
+			</div>
+		</c:if>
+		#{userBean.resetLeftMargin()}
+		<ui:include src="recursiveComments.xhtml">
+			<ui:param name="comment" value="#{entry}" />
 		</ui:include>
 	</ui:define>
 </ui:decorate>

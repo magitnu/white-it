@@ -15,15 +15,13 @@
 					<h:form>
 						<h:commandLink styleClass="upVote">
 							<f:param name="id" value="#{entry.id}" />
-							<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
-								render="numberOfVotes" />
+							<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}" render="numberOfVotes" />
 						</h:commandLink>
 						<h:outputText styleClass="score" id="numberOfVotes"
 							value="#{entry.score}" />
 						<h:commandLink styleClass="downVote">
 							<f:param name="id" value="#{entry.id}" />
-							<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
-								render="numberOfVotes" />
+							<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}" render="numberOfVotes" />
 						</h:commandLink>
 					</h:form>
 				</ui:define>
@@ -31,9 +29,11 @@
 					<a href="#{entry.url}" target="_blank">#{entry.title}</a>
 				</ui:define>
 				<ui:define name="linkComments">
-					<h:link value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" outcome="linkDetail.xhtml">
-						<f:param name="id" value="#{entry.id}"/>
-					</h:link>
+					<h:form >
+						<h:commandLink value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" action="${entryBean.showEntry(entry.id)}">
+							<f:param name="id" value="#{entry.id}"/>
+						</h:commandLink>
+					</h:form>
 				</ui:define>
 			</ui:decorate>
 		</ui:repeat>
