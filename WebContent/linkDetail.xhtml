@@ -49,13 +49,10 @@
 					
 					<h:form>
 				
-					<h:commandButton action="#{entryBean.createComment}" actionListener="#{entryBean.attrListener}"> 
+					<h:commandButton id="asdf" action="#{entryBean.createComment}" actionListener="#{entryBean.attrListener}"> 
 						<f:attribute name="entryId" value="#{entry.id}" />
 					</h:commandButton>
 					
-					<h:button action="#{entryBean.createComment}">
-						<f:param name="id" value="#{entry.id}" />
-					</h:button>
 
 					</h:form>
 

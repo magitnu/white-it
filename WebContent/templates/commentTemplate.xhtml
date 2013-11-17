@@ -28,11 +28,11 @@
 						<h:form>
 							<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;"/>
 							<p:inputTextarea value="${commentText}" />
-							<h:inputHidden id=""/>
-							<p:commandButton action="${entryBean.rateEntry}">
+							
+							<h:commandButton  value="Comment"  action="${entryBean.rateEntry}">
 								<f:param name="currentEntry" value="#{entry.id}"></f:param>
 								<f:param name="ratedEntry" value="#{comment.id}"/>
-							</p:commandButton>
+							</h:commandButton>
 <!-- Hier kann alles abgeändert und gelöscht werden. Bei mir funktionierte die Übergabe des Entries nie... -->
 						</h:form>
 					</div>

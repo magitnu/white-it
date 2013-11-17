@@ -1,5 +1,6 @@
 package ch.hsr.intte.whiteit.beans;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -63,14 +64,25 @@ public class EntryBean  extends BaseBean{
 		return Logic.entry().createLink(user, url, title);
 	}
 	
-	public void attrListener(ActionEvent event) {
-		commentEntryId = (String)event.getComponent().getAttributes().get("entryId");
-				
-	}
 	
 	public void createComment(){
-		  System.out.println(commentEntryId);
-		  Helper.doPostback();
+		// Das Problem ist dass der commandButton die Seite aktualisiert und den Parameter ?id=7..... entfernt
+		// Ein Redirect mit diesen Parametern angehängt hat leider nicht funktioniert?
+		// Habt ihr noch ideen? Ansonsten müsste man diesen parameter vielleicht in ein Bean speichern statt in der URL....
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
+		
+		System.out.println(paramMap.get("currentEntry"));
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("www.google.com");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		  System.out.println(commentEntryId);
+//		  Helper.doPostback();
 	}
 	
 	
@@ -78,6 +90,7 @@ public class EntryBean  extends BaseBean{
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
 		return Logic.entity().getLinkById(UUID.fromString(paramMap.get("id")));
+
 	}
 	
 	public Comment getCommentById() {
