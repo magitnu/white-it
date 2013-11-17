@@ -34,13 +34,12 @@ public class EntryLogic  extends Logic{
 		return l;
 	}
 	
-	public Comment createComment(User user, Entry entry, String text) {
+	public Comment createComment(String username, Link entry, String text) {
 		System.out.println("inside creating Comment");
 		Comment c = new Comment();
 		c.setCreatedDate(new Date());
 		c.setDownVotes(0);
 		c.setUpVotes(0);
-		c.setUser(user);
 		c.setText(text);
 		Logic.entity().addComment(c);
 		entry.addRatedByComment(c);

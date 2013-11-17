@@ -45,14 +45,18 @@
 				<div class="replyBox">
 					<img src="/WhiteIt/img/message.png" alt="message" height="85px"
 						style="float: left; margin-right: 5px;"></img>
-					<h:form>
 						<p>#{entry.id}</p>
-							<h:form>
 					
-					<h:commandButton value="Testbutton" action="#{entryBean.Comment(entry)}">
-					    <f:ajax execute="@form" render="@none" />
+					<h:form>
+				
+					<h:commandButton action="#{entryBean.createComment}" actionListener="#{entryBean.attrListener}"> 
+						<f:attribute name="entryId" value="#{entry.id}" />
 					</h:commandButton>
-				</h:form>
+					
+					<h:button action="#{entryBean.createComment}">
+						<f:param name="id" value="#{entry.id}" />
+					</h:button>
+
 					</h:form>
 
 				</div>

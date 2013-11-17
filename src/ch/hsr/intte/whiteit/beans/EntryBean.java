@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
+import ch.hsr.intte.whiteit.businesslogic.Helper;
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
 import ch.hsr.intte.whiteit.entities.Entry;
@@ -14,7 +16,7 @@ import ch.hsr.intte.whiteit.entities.User;
 
 public class EntryBean  extends BaseBean{
 	public User commentUser;
-	public Entry commentEntry;
+	public String commentEntryId;
 	public String commentText;
 	
 	public int voteUp(Entry e) {
@@ -39,11 +41,11 @@ public class EntryBean  extends BaseBean{
 	public void setCommentUser(User commentUser) {
 		this.commentUser = commentUser;
 	}
-	public Entry getCommentEntry() {
-		return commentEntry;
+	public String getCommentEntryId() {
+		return commentEntryId;
 	}
-	public void setCommentEntry(Entry commentEntry) {
-		this.commentEntry = commentEntry;
+	public void setCommentEntryId(String commentEntryId) {
+		this.commentEntryId = commentEntryId;
 	}
 	public String getCommentText() {
 		return commentText;
@@ -58,10 +60,15 @@ public class EntryBean  extends BaseBean{
 		return Logic.entry().createLink(user, url, title);
 	}
 	
-	public Comment createComment() {
-		System.out.println("inside EntryBean");
-		return Logic.entry().createComment(commentUser, commentEntry, commentText);
+	public void attrListener(ActionEvent event) {
+		commentEntryId = (String)event.getComponent().getAttributes().get("entryId");
+				
 	}
+	
+	  public void createComment(){
+		  System.out.println(commentEntryId);
+		  Helper.doPostback();
+	  }
 	
 	
 	public Link getLinkById() {
