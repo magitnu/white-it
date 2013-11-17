@@ -35,7 +35,7 @@
 		<h:outputText value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" />
 
 		<br />
-		<c:if test="#{userBean.loggedIn}">
+		<!-- <c:if test="#{userBean.loggedIn}"> -->
 			<div class="replyBox">
 				<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
 				<h:form>
@@ -48,26 +48,13 @@
 						
 					</h:commandLink>
 				</h:form>
+			</div>
+			<!-- </c:if> -->
+		 		
 
 		<!-- 		<c:choose>
 			<c:when test="#{userBean.loggedIn}"> -->
-		<div class="replyBox">
-					<img src="/WhiteIt/img/message.png" alt="message" height="85px"
-						style="float: left; margin-right: 5px;"></img>
-						<p>#{entry.id}</p>
-					
-					<h:form>
-				
-					<h:commandButton id="asdf" action="#{entryBean.createComment}" actionListener="#{entryBean.attrListener}"> 
-						<f:attribute name="entryId" value="#{entry.id}" />
-					</h:commandButton>
-			</h:form>
-			
-						<h:form action="#{commentBean.createComment}" method="post">
-				<h:inputTextarea id="text" value="#{commentBean.text}"></h:inputTextarea>
-				<h:button>Senden</h:button>
 
-		</div>
 		<!-- 	</c:when>
 		</c:choose>	 -->	
 			#{userBean.resetLeftMargin()}

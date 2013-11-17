@@ -1,6 +1,8 @@
 package ch.hsr.intte.whiteit.beans;
 
 
+import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -94,8 +96,9 @@ public class EntryBean extends BaseBean {
 	public void showEntry(String entryId) {
 		String uri = Helper.getRequestUrl();
 		uri += (uri.contains("?") ? "&" : "?") + "id=" + entryId;
+		
 		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect(uri);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/faces/linkDetail.xhtml?id=" + entryId);
 		} catch (IOException e) {
 		}
 	}
