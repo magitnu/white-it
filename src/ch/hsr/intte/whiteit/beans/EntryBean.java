@@ -53,8 +53,11 @@ public class EntryBean  extends BaseBean{
 	public void setCommentText(String commentText) {
 		this.commentText = commentText;
 	}
-	public Comment rateEntry(Entry ratedEntry, User user, String text) {
-		return Logic.entry().rateEntry(ratedEntry, user, text);
+	public Comment rateEntry() {
+		//Entry ratedEntry, User user, String text
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		
+		return null;//Logic.entry().rateEntry(ratedEntry, user, text);
 	}
 	public Link createLink(User user, String url, String title) {
 		return Logic.entry().createLink(user, url, title);
@@ -65,10 +68,10 @@ public class EntryBean  extends BaseBean{
 				
 	}
 	
-	  public void createComment(){
+	public void createComment(){
 		  System.out.println(commentEntryId);
 		  Helper.doPostback();
-	  }
+	}
 	
 	
 	public Link getLinkById() {

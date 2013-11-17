@@ -22,17 +22,19 @@
 			</p>
 			<c:choose>
 				<c:when test="#{userBean.loggedIn}">
-					<img src="/WhiteIt/img/message.png" alt="reply" height="20px"
-						style="float: left; margin-right: 5px;"></img>
+					<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin-right: 5px;" />
 					<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
 					<div class="replyBox" style="display: none">
-						<img src="/WhiteIt/img/message.png" alt="message" height="85px"
-							style="float: left; margin-right: 5px;"></img>
-							
+						<h:form>
+							<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;"/>
+							<p:inputTextarea value="${commentText}" />
+							<h:inputHidden id=""/>
+							<p:commandButton action="${entryBean.rateEntry}">
+								<f:param name="currentEntry" value="#{entry.id}"></f:param>
+								<f:param name="ratedEntry" value="#{comment.id}"/>
+							</p:commandButton>
 <!-- Hier kann alles abgeändert und gelöscht werden. Bei mir funktionierte die Übergabe des Entries nie... -->
-
-						
-
+						</h:form>
 					</div>
 				</c:when>
 			</c:choose>
