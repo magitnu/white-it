@@ -1,74 +1,95 @@
 package ch.hsr.intte.whiteit.beans;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
-import ch.hsr.intte.whiteit.businesslogic.Helper;
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
 import ch.hsr.intte.whiteit.entities.Entry;
 import ch.hsr.intte.whiteit.entities.Link;
 import ch.hsr.intte.whiteit.entities.User;
 
-public class EntryBean  extends BaseBean{
+@SessionScoped
+public class EntryBean extends BaseBean {
+	
 	public User commentUser;
-	public String commentEntryId;
+	public Entry commentEntry;
 	public String commentText;
 	
-	public int voteUp(Entry e) {
-		System.out.println("Upvoted"+((Link)e).getTitle());
-		return Logic.entry().voteUp(e);
+	private UUID getRequestId() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String, String> paramMap = context.getExternalContext()
+				.getRequestParameterMap();
+		return UUID.fromString(paramMap.get("id"));
 	}
-	public int voteDown(Entry e) {
-		return Logic.entry().voteDown(e);
+	
+	private UUID getIdFromString(String id){
+		return UUID.fromString(id);
 	}
+	
+	public void voteUp(String id) {
+		Logic.entry().voteUp(Logic.entity().getEntryById(UUID.fromString(id)));
+	}
+
+	public void voteDown(String id) {
+		Logic.entry().voteDown(Logic.entity().getEntryById(UUID.fromString(id)));
+	}
+
 	public List<Link> getAllLinks() {
 		return Logic.entry().getAllLinks();
 	}
+
 	public List<Comment> getCommentsByEntry(Entry entry) {
 		return Logic.entry().getCommentsByEntry(entry);
 	}
-	public int getCommentCountByEntry(Entry entry) {
-		return Logic.entry().getCommentsByEntry(entry).size();
+
+	public String getCommentCountByEntryId(String id) {
+		return Integer.toString(Logic.entry().getCommentsByEntry(getEntryById(id)).size());
 	}
+
 	public User getCommentUser() {
 		return commentUser;
 	}
+
 	public void setCommentUser(User commentUser) {
 		this.commentUser = commentUser;
 	}
-	public String getCommentEntryId() {
-		return commentEntryId;
+
+	public Entry getCommentEntry() {
+		return commentEntry;
 	}
-	public void setCommentEntryId(String commentEntryId) {
-		this.commentEntryId = commentEntryId;
+
+	public void setCommentEntry(Entry commentEntry) {
+		this.commentEntry = commentEntry;
 	}
+
 	public String getCommentText() {
 		return commentText;
 	}
+
 	public void setCommentText(String commentText) {
 		this.commentText = commentText;
 	}
-	public Comment rateEntry() {
-		//Entry ratedEntry, User user, String text
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		
-		return null;//Logic.entry().rateEntry(ratedEntry, user, text);
+
+	public Comment rateEntry(Entry ratedEntry, User user, String text) {
+		return Logic.entry().rateEntry(ratedEntry, user, text);
 	}
+
 	public Link createLink(User user, String url, String title) {
 		return Logic.entry().createLink(user, url, title);
 	}
-	
+
 	
 	public void createComment(){
 		// Das Problem ist dass der commandButton die Seite aktualisiert und den Parameter ?id=7..... entfernt
-		// Ein Redirect mit diesen Parametern angehängt hat leider nicht funktioniert?
-		// Habt ihr noch ideen? Ansonsten müsste man diesen parameter vielleicht in ein Bean speichern statt in der URL....
+		// Ein Redirect mit diesen Parametern angehï¿½ngt hat leider nicht funktioniert?
+		// Habt ihr noch ideen? Ansonsten mï¿½sste man diesen parameter vielleicht in ein Bean speichern statt in der URL....
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
@@ -85,17 +106,15 @@ public class EntryBean  extends BaseBean{
 //		  Helper.doPostback();
 	}
 	
-	
 	public Link getLinkById() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-		return Logic.entity().getLinkById(UUID.fromString(paramMap.get("id")));
+		return Logic.entity().getLinkById(getRequestId());
+	}
 
+	public Comment getCommentById() {
+		return Logic.entity().getCommentById(getRequestId());
 	}
 	
-	public Comment getCommentById() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-		return Logic.entity().getCommentById(UUID.fromString(paramMap.get("id")));
+	public Entry getEntryById(String id) {
+		return Logic.entity().getEntryById(getIdFromString(id));
 	}
 }

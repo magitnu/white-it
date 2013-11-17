@@ -10,13 +10,18 @@
 	<c:if test="#{comment.instanceOfComment}">
 		<ui:decorate template="./templates/commentTemplate.xhtml">
 			<ui:define name="votesAndScore">
-				<h:form>
-					<h:commandLink styleClass="upVote">
-						<f:ajax event="click" listener="#{entryBean.voteUp(comment)}" render="numberOfVotes" />
+				<h:form name="form">
+					<h:commandLink styleClass="upVote" update=":form">
+						<f:param name="id" value="#{entry.id}" />
+						<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
+							render="numberOfVotes" />
 					</h:commandLink>
-					<h:outputText styleClass="score" id="numberOfVotes" value="#{comment.score}" />
+					<h:outputText styleClass="score" id="numberOfVotes"
+						value="#{entry.score}" />
 					<h:commandLink styleClass="downVote">
-						<f:ajax event="click" listener="#{entryBean.voteDown(comment)}" render="numberOfVotes" />
+						<f:param name="id" value="#{entry.id}" />
+						<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
+							render="numberOfVotes" />
 					</h:commandLink>
 				</h:form>
 			</ui:define>

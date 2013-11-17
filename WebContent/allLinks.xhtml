@@ -14,20 +14,26 @@
 				<ui:define name="votesAndScore">
 					<h:form>
 						<h:commandLink styleClass="upVote">
-							<f:ajax event="click" listener="#{entryBean.voteUp(entry)}"
+							<f:param name="id" value="#{entry.id}" />
+							<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
 								render="numberOfVotes" />
 						</h:commandLink>
 						<h:outputText styleClass="score" id="numberOfVotes"
 							value="#{entry.score}" />
 						<h:commandLink styleClass="downVote">
-							<f:ajax event="click" listener="#{entryBean.voteDown(entry)}"
+							<f:param name="id" value="#{entry.id}" />
+							<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
 								render="numberOfVotes" />
 						</h:commandLink>
 					</h:form>
 				</ui:define>
-				<ui:define name="link"><a href="#{entry.url}" target="_blank">#{entry.title}</a></ui:define>
+				<ui:define name="link">
+					<a href="#{entry.url}" target="_blank">#{entry.title}</a>
+				</ui:define>
 				<ui:define name="linkComments">
-					<a href="linkDetail.xhtml?id=#{entry.id}">#{entryBean.getCommentCountByEntry(entry)} Comments</a>
+					<h:link value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" outcome="linkDetail.xhtml">
+						<f:param name="id" value="#{entry.id}"/>
+					</h:link>
 				</ui:define>
 			</ui:decorate>
 		</ui:repeat>
