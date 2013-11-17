@@ -1,12 +1,14 @@
 package ch.hsr.intte.whiteit.beans;
 
-import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.faces.bean.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.view.facelets.FaceletContext;
 
@@ -19,23 +21,40 @@ import ch.hsr.intte.whiteit.entities.Entry;
 import ch.hsr.intte.whiteit.entities.Link;
 import ch.hsr.intte.whiteit.entities.User;
 
-@SessionScoped
+@ApplicationScoped
+@ManagedBean
 public class EntryBean extends BaseBean {
+    @ManagedProperty(value="#{commentBean}")
+    private UUID currentLinkId; // +setter
 	
-	public User commentUser;
-	public Entry commentEntry;
-	public String commentText;
-	
+	@PostConstruct
 	private UUID getRequestId() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-		try {
+		Map<String, String> paramMap = context.getExternalContext()
+				.getRequestParameterMap();
+		if (paramMap.containsKey("id")) {
 			return UUID.fromString(paramMap.get("id"));
-		} catch(Exception e) {
+		} else {
 			return null;
 		}
+		
 	}
 	
+	public UUID getCurrentLinkId() {
+		return currentLinkId;
+	}
+
+	public void setCurrentLinkId(UUID currentLinkId) {
+		System.out.println("Set currentLinkId: " + currentLinkId.toString());
+		if (currentLinkId.toString() != null) {
+			this.currentLinkId = currentLinkId;
+			System.out.println("currentLinkId is set: " + this.currentLinkId.toString());
+		} else {
+			System.out.println("not set, is still: " + this.currentLinkId.toString());
+		}
+		
+	}
+
 	private UUID getIdFromString(String id){
 		return UUID.fromString(id);
 	}
@@ -60,30 +79,6 @@ public class EntryBean extends BaseBean {
 		return Integer.toString(Logic.entry().getCommentsByEntry(getEntryById(id)).size());
 	}
 
-	public User getCommentUser() {
-		return commentUser;
-	}
-
-	public void setCommentUser(User commentUser) {
-		this.commentUser = commentUser;
-	}
-
-	public Entry getCommentEntry() {
-		return commentEntry;
-	}
-
-	public void setCommentEntry(Entry commentEntry) {
-		this.commentEntry = commentEntry;
-	}
-
-	public String getCommentText() {
-		return commentText;
-	}
-
-	public void setCommentText(String commentText) {
-		this.commentText = commentText;
-	}
-
 	public Comment rateEntry(/*Entry ratedEntry, User user, String text*/) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
@@ -104,29 +99,16 @@ public class EntryBean extends BaseBean {
 		} catch (IOException e) {
 		}
 	}
-	
-	public void createComment(){
-		// Das Problem ist dass der commandButton die Seite aktualisiert und den Parameter ?id=7..... entfernt
-		// Ein Redirect mit diesen Parametern angeh�ngt hat leider nicht funktioniert?
-		// Habt ihr noch ideen? Ansonsten m�sste man diesen parameter vielleicht in ein Bean speichern statt in der URL....
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext().getRequestParameterMap();
-		
-		System.out.println(paramMap.get("currentEntry"));
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("www.google.com");
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		  System.out.println(commentEntryId);
-//		  Helper.doPostback();
-	}
-	
 	public Link getLinkById() {
-		return Logic.entity().getLinkById(getRequestId());
+		Link l = Logic.entity().getLinkById(getRequestId());
+		if (l == null) {
+			System.out.println("ReturnedId " + currentLinkId);
+			Link ll = (Link) Logic.entity().getEntryById(currentLinkId);
+			System.out.println(ll.toString());
+			return ll;
+		} else {
+			return l;
+		}
 	}
 
 	public Comment getCommentById() {

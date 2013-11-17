@@ -24,6 +24,7 @@ public class CommentBean extends BaseBean {
 	public Entry entry;
 	public String text;
 
+
 	public User getUser() {
 		return user;
 	}
