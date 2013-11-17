@@ -34,7 +34,7 @@ public class EntryLogic  extends Logic{
 		return l;
 	}
 	
-	public Comment createComment(String username, Link entry, String text) {
+	public Comment createComment(String username, Entry entry, String text) {
 		System.out.println("inside creating Comment");
 		Comment c = new Comment();
 		c.setCreatedDate(new Date());

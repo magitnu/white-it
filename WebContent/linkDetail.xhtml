@@ -45,17 +45,12 @@
 		<!-- 		<c:choose>
 			<c:when test="#{userBean.loggedIn}"> -->
 		<div class="replyBox">
-					<img src="/WhiteIt/img/message.png" alt="message" height="85px"
-						style="float: left; margin-right: 5px;"></img>
-						<p>#{entry.id}</p>
-					
-					<h:form>
-				
-					<h:commandButton id="asdf" action="#{entryBean.createComment}" actionListener="#{entryBean.attrListener}"> 
-						<f:attribute name="entryId" value="#{entry.id}" />
-					</h:commandButton>
-					</h:commandButton>
-				</h:form>
+			<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+				style="float: left; margin-right: 5px;"></img>
+
+			<h:form action="#{commentBean.createComment}" method="post">
+				<h:inputTextarea id="text" value="#{commentBean.text}"></h:inputTextarea>
+				<h:button>Senden</h:button>
 			</h:form>
 
 		</div>
