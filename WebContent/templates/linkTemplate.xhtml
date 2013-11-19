@@ -28,7 +28,6 @@
 				<div class="commentDescription">
 					<span class="bold">#{entry.createdString}</span>
 					<div>
-						<img src="/WhiteIt/img/message.png" alt="message" class="messageImg" height="45px" />
 						<h:commandLink value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" action="${userBean.showEntry(entry.id)}">
 							<f:param name="id" value="#{entry.id}"/>
 						</h:commandLink>
