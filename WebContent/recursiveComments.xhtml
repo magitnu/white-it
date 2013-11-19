@@ -5,30 +5,26 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 
-
-
-	<c:if test="#{comment.instanceOfComment}">
-		<ui:decorate template="./templates/commentTemplate.xhtml">
-			<ui:define name="votesAndScore">
-				<h:form name="form">
-					<h:commandLink styleClass="upVote" update=":form">
-						<f:param name="id" value="#{entry.id}" />
-						<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
-							render="numberOfVotes" />
-					</h:commandLink>
-					<h:outputText styleClass="score" id="numberOfVotes"
-						value="#{entry.score}" />
-					<h:commandLink styleClass="downVote">
-						<f:param name="id" value="#{entry.id}" />
-						<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
-							render="numberOfVotes" />
-					</h:commandLink>
-				</h:form>
-			</ui:define>
-			<ui:define name="commentDescription"> #{comment.createdString}</ui:define>
-			<ui:define name="commentText"> #{comment.text}</ui:define>
-		</ui:decorate>
-	</c:if>
+	<ui:decorate template="./templates/commentTemplate.xhtml">
+		<ui:define name="votesAndScore">
+			<h:form name="form">
+				<h:commandLink styleClass="upVote" update=":form">
+					<f:param name="id" value="#{entry.id}" />
+					<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
+						render="numberOfVotes" />
+				</h:commandLink>
+				<h:outputText styleClass="score" id="numberOfVotes"
+					value="#{entry.score}" />
+				<h:commandLink styleClass="downVote">
+					<f:param name="id" value="#{entry.id}" />
+					<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
+						render="numberOfVotes" />
+				</h:commandLink>
+			</h:form>
+		</ui:define>
+		<ui:define name="commentDescription"> #{comment.createdString}</ui:define>
+		<ui:define name="commentText"> #{comment.text}</ui:define>
+	</ui:decorate>
 
 	<c:choose>
 		<c:when test="#{comment.hasComments}">

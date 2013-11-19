@@ -11,7 +11,7 @@
 
 
 	<ui:define name="content">
-		<c:set var="entry" value="#{userBean.currentEntry}" />
+		<c:set var="entry" value="#{entryBean.linkById}" />
 		<ui:decorate template="./templates/linkTemplate.xhtml">
 			<ui:define name="votesAndScore">
 				<h:form name="form">
@@ -40,25 +40,19 @@
 			value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" />
 
 		<br />
-		<c:if test="#{userBean.loggedIn}">
-			<div class="replyBox">
-				<img src="/WhiteIt/img/message.png" alt="message" height="85px"
-					style="float: left; margin-right: 5px;" />
-				<h:form>
-					<p:inputTextarea value="${entryBean.commentText}" />
+		<!-- <c:if test="#{userBean.loggedIn}"> -->
+		<div class="replyBox">
+			<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+				style="float: left; margin-right: 5px;" />
+			<h:form>
+				<p:inputTextarea value="${commentText}" />
 
-					<h:commandLink value="Comment" action="${entryBean.rateEntry}">
-						<f:param name="ratedEntry" value="#{entry.id}" />
-						<f:param name="user" value="#{userBean.username}" />
-
-					</h:commandLink>
-				</h:form>
-
-			</div>
-		</c:if>
-		#{userBean.resetLeftMargin()}
-		<c:forEach items="#{entry.ratedByComments}" var="comment">
-			<ui:include src="recursiveComments.xhtml" />
-		</c:forEach>
+				<h:commandLink value="Comment" action="${entryBean.rateEntry(commentText)}">
+					<f:param name="id" value="#{param['id']} " />
+					<f:param name="ratedEntry" value="#{entry.id}" />
+					<f:param name="user" value="#{userBean.username}" />
+				</h:commandLink>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:decorate>
