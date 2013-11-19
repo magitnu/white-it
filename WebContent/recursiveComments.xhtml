@@ -32,7 +32,7 @@
 					<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin-right: 5px;" />
 					<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
 					<div class="replyBox" style="display: none">
-									<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
+						<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
 						<h:form class="greyForm">
 							<h:inputTextarea value="#{entryBean.commentText}" />
 		
@@ -46,7 +46,7 @@
 			</c:choose>
 		</div>
 		
-		<div class="subcomments" style="margin-left: 60px">
+		<div class="subcomments" style="clear:left;">
 			<c:forEach items="#{comment.ratedByComments}" var="comment">
 				<ui:include src="recursiveComments.xhtml" />
 			</c:forEach>
