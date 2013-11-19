@@ -10,18 +10,20 @@
 			<c:when test="#{userBean.loggedIn}">
 				<div id="userMenu">
 					<div id="submitButton">
-						<h:commandButton value="Submit New Link" onclick="displaySubmitLinkBox()" />
-						<h:form id="formLogout" style="display:inline;">
-							<h:commandButton value="Logout" id="logout" action="${userBean.logOut}" />
-						</h:form>
+						<h:link value="Submit New Link" onclick="displaySubmitLinkBox()"
+							styleClass="headerlinks" />
 					</div>
-		
+
 					<div id="userOptions">
-						<h:outputText value="Hi #{userBean.name} you are logged in!"></h:outputText>
+						<h:outputText value="Hi #{userBean.name}, you are logged in!"></h:outputText>
+						<h:form id="formLogout" style="display:inline;">
+							<h:commandLink value="Logout" id="logout"
+								action="${userBean.logOut}" styleClass="headerlinks" />
+						</h:form>
 					</div>
 				</div>
 			</c:when>
-			
+
 			<c:otherwise>
 				<div id="guestMenu">
 					<h:form id="formLogin">
@@ -29,10 +31,12 @@
 						<p:inputText id="username" value="#{userBean.username}" />
 						<h:outputLabel for="password" value="Password" />
 						<p:password id="password" value="#{userBean.password}" />
-						<p:commandLink value="Login" id="login" action="#{userBean.login}" styleClass="headerlinks" />
-						<p:commandLink value="Register" id="register" onclick="displayRegisterBox()" styleClass="headerlinks" />
+						<p:commandLink value="Register" id="register"
+							onclick="displayRegisterBox()" styleClass="headerlinks" />
+						<p:commandLink value="Login" id="login" action="#{userBean.login}"
+							styleClass="headerlinks" />
 					</h:form>
-					
+
 				</div>
 			</c:otherwise>
 		</c:choose>
