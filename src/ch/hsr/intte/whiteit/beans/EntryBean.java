@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.faces.context.FacesContext;
 
+import ch.hsr.intte.whiteit.businesslogic.Helper;
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
 import ch.hsr.intte.whiteit.entities.Entry;
@@ -51,12 +52,13 @@ public class EntryBean extends BaseBean {
 		return Integer.toString(Logic.entry().getCommentsCountByEntry(getEntryById(id)));
 	}
 
-	public String rateEntry(/*Entry ratedEntry, User user, String text*/) {
+	public String rateEntry() {
 		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Entry ratedEntry = Logic.entity().getEntryById(UUID.fromString(paramMap.get("ratedEntry")));
 		Logic.entry().rateEntry(ratedEntry, user, getCommentText());
-		return "asdf";
+		Helper.doPostback();
+		return "";
 	}
 
 	public Link createLink(User user, String url, String title) {

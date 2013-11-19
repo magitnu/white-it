@@ -47,11 +47,10 @@
 				<h:form>
 					<h:inputTextarea value="#{entryBean.commentText}"></h:inputTextarea>
 
-					<h:commandLink value="Comment" action="#{entryBean.rateEntry}">
+					<h:commandButton value="Comment" action="${entryBean.rateEntry}">
 						<f:param name="ratedEntry" value="#{entry.id}" />
 						<f:param name="user" value="#{userBean.username}" />
-
-					</h:commandLink>
+					</h:commandButton>
 				</h:form>
 
 			</div>
