@@ -200,6 +200,18 @@ a:hover.downVote {
 	background-color: lightgrey;
 }
 
+.replyLink {
+	margin-top: 5px;
+	width: 150px;
+	border-top: 1px solid black;
+	display: inline-block;
+}
+
+.replyLink > a {
+	cursor: pointer;
+}
+
+
 /* Elements */
 h1 {
 	margin-top: 0px;
@@ -232,7 +244,10 @@ input[type="password"] {
 .bold {
 	font-weight: bold;
 }
-
+.greyedOut, .greyedOut * {
+	color: #808080;
+	border-color: #808080 !important;
+}
 .commentDescription .messageImg {
 	float: left;
 	margin-top:-8px;
