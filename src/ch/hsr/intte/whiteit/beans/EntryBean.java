@@ -16,6 +16,8 @@ import ch.hsr.intte.whiteit.entities.User;
 
 public class EntryBean extends BaseBean {
 	private String commentText;
+	private String linkTitle;
+	private String linkUrl;
 	
 	private UUID getRequestId() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -52,18 +54,36 @@ public class EntryBean extends BaseBean {
 		return Integer.toString(Logic.entry().getCommentsCountByEntry(getEntryById(id)));
 	}
 
-	public String rateEntry() {
+	public void rateEntry() {
 		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Entry ratedEntry = Logic.entity().getEntryById(UUID.fromString(paramMap.get("ratedEntry")));
 		Logic.entry().rateEntry(ratedEntry, user, getCommentText());
-		return "";
 	}
 
-	public Link createLink(User user, String url, String title) {
-		return Logic.entry().createLink(user, url, title);
+	public void createLink() {
+		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		User user = Logic.user().getUserByUsername(paramMap.get("user"));
+		Logic.entry().createLink(user, getLinkUrl(), getLinkTitle());
+		//return Logic.entry().createLink(user, url, title);
 	}
 	
+	public String getLinkTitle() {
+		return linkTitle;
+	}
+
+	public void setLinkTitle(String linkTitle) {
+		this.linkTitle = linkTitle;
+	}
+
+	public String getLinkUrl() {
+		return linkUrl;
+	}
+
+	public void setLinkUrl(String linkUrl) {
+		this.linkUrl = linkUrl;
+	}
+
 	public Comment getCommentById() {
 		return Logic.entity().getCommentById(getRequestId());
 	}
@@ -79,4 +99,6 @@ public class EntryBean extends BaseBean {
 	public void setCommentText(String commentText) {
 		this.commentText = commentText;
 	}
+	
+	
 }
