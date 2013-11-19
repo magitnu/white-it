@@ -179,3 +179,10 @@ p {
 	margin: 0px;
 	font-size: large;
 }
+
+
+/* Primefaces CSS Hacks */
+.ui-messages-info, .ui-messages-warn, .ui-messages-error, .ui-messages-fatal {
+	margin:0;
+	padding:60px 10px 10px;
+}
