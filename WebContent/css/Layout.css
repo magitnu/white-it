@@ -33,6 +33,10 @@ a:active {
 }
 
 /* Header CSS */
+.headerlinks {
+	color: #ffffff;
+	margin: 0 10px;
+}
 
 /* Containers */
 #header {
@@ -59,7 +63,7 @@ a:active {
 
 #guestMenu,#userOptions {
 	margin-right: 20px;
-	margin-top: 5px;
+	margin-top: 6px;
 	float: right;
 }
 
@@ -212,4 +216,9 @@ p {
 
 .ui-inputfield {
 	margin: 0 5px;
+}
+
+.ui-widget {
+	font-family: 'Average Sans', sans-serif;
+	font-size: 1em;
 }
