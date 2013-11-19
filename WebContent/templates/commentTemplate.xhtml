@@ -26,7 +26,7 @@
 					<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
 					<div class="replyBox" style="display: none">
 						<h:form>
-							<h:inputTextarea value="#{entryBean.commentText}"></h:inputTextarea>
+							<h:inputTextarea value="#{entryBean.commentText}" />
 		
 							<h:commandButton value="Comment" action="${entryBean.rateEntry}">
 								<f:param name="ratedEntry" value="#{comment.id}" />

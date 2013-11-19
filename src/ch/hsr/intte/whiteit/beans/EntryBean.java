@@ -57,7 +57,6 @@ public class EntryBean extends BaseBean {
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Entry ratedEntry = Logic.entity().getEntryById(UUID.fromString(paramMap.get("ratedEntry")));
 		Logic.entry().rateEntry(ratedEntry, user, getCommentText());
-		Helper.doPostback();
 		return "";
 	}
 
