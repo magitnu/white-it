@@ -39,7 +39,7 @@ public abstract class Entry extends BaseEntity{
 	}
 	
 	public String getCreatedString(){
-		return "Submitted on" + createdDate + " by " + user.getUsername();
+		return "Submitted on " + createdDate + " by " + user.getUsername();
 	}
 
 	public int getUpVotes() {
