@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <ui:decorate template="./templates/menuTemplate.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -9,28 +8,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-
 	<ui:define name="content">
 		<c:set var="entry" value="#{userBean.currentEntry}" />
-		<ui:decorate template="./templates/linkTemplate.xhtml" />
+		<c:set var="detail" value="${true}" />
 		
-		<c:if test="#{userBean.loggedIn}">
-			<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin: 0 5px 0 135px;" />
-			<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
-			<div class="replyBox" style="display:none;">
-				<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
-				<h:form class="greyForm">
-				
-					<h:inputTextarea value="#{entryBean.commentText}" />
-
-					<h:commandButton value="Comment" action="${entryBean.rateEntry}">
-						<f:param name="ratedEntry" value="#{entry.id}" />
-						<f:param name="user" value="#{userBean.username}" />
-					</h:commandButton>
-				</h:form>
-
-			</div>
-		</c:if>
+		<ui:decorate template="./templates/linkTemplate.xhtml" />
 		
 		<c:forEach items="#{entry.ratedByComments}" var="comment">
 			<ui:include src="recursiveComments.xhtml" />

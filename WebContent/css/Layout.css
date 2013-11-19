@@ -186,9 +186,8 @@ a:hover.downVote {
 
 .commentBox,.linkBox {
 	margin-left: 60px;
-	margin-bottom: 30px;
-	min-height: 90px;
 	padding-top: 15px;
+	clear:left;
 }
 
 .linkBox {
