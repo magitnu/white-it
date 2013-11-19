@@ -11,9 +11,9 @@
 	<ui:define name="content">
 		<c:set var="entry" value="#{userBean.currentEntry}" />
 		<c:set var="detail" value="${true}" />
-		
+
 		<ui:decorate template="./templates/linkTemplate.xhtml" />
-		
+
 		<c:forEach items="#{entry.ratedByComments}" var="comment">
 			<ui:include src="recursiveComments.xhtml" />
 		</c:forEach>

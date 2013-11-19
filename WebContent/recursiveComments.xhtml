@@ -24,7 +24,7 @@
 		<div class="commentDescription">
 			<span class="bold greyedOut">#{comment.createdString}</span>
 		</div>
-		
+
 		<div class="commentText">
 			<p>#{comment.text}</p>
 			<c:choose>
@@ -33,10 +33,11 @@
 						<a onclick="displayCommentBox(this);">reply</a>
 					</div>
 					<div class="replyBox" style="display: none">
-						<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
+						<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+							style="float: left; margin-right: 5px;" />
 						<h:form class="greyForm">
 							<h:inputTextarea value="#{entryBean.commentText}" />
-		
+
 							<h:commandButton value="Comment" action="${entryBean.rateEntry}">
 								<f:param name="ratedEntry" value="#{comment.id}" />
 								<f:param name="user" value="#{userBean.username}" />
@@ -46,8 +47,8 @@
 				</c:when>
 			</c:choose>
 		</div>
-		
-		<div class="subcomments" style="clear:left;">
+
+		<div class="subcomments" style="clear: left;">
 			<c:forEach items="#{comment.ratedByComments}" var="comment">
 				<ui:include src="recursiveComments.xhtml" />
 			</c:forEach>
