@@ -191,6 +191,11 @@ a:hover.downVote {
 	padding-top: 15px;
 }
 
+.linkBox {
+	margin-left: 20px;
+}
+
+
 .greyForm {
 	margin-left: -2000px;
 	background-color: lightgrey;
@@ -224,6 +229,19 @@ input[type="text"] {
 input[type="password"] {
 	font-size: 1em;
 	color: #808080;
+}
+.bold {
+	font-weight: bold;
+}
+
+.commentDescription .messageImg {
+	float: left;
+	margin-top:-8px;
+	margin-left:-6px;
+}
+
+.commentDescription > div {
+	margin-top:5px;
 }
 
 /* Primefaces CSS Hacks */

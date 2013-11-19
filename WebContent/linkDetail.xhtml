@@ -12,35 +12,8 @@
 
 	<ui:define name="content">
 		<c:set var="entry" value="#{userBean.currentEntry}" />
-		<ui:decorate template="./templates/linkTemplate.xhtml">
-			<ui:define name="votesAndScore">
-				<h:form name="form">
-					<h:commandLink styleClass="upVote" update=":form">
-						<f:param name="id" value="#{entry.id}" />
-						<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
-							render="numberOfVotes" />
-					</h:commandLink>
-					<h:outputText styleClass="score" id="numberOfVotes"
-						value="#{entry.score}" />
-					<h:commandLink styleClass="downVote">
-						<f:param name="id" value="#{entry.id}" />
-						<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
-							render="numberOfVotes" />
-					</h:commandLink>
-				</h:form>
-			</ui:define>
-			<ui:define name="link">
-				<a href="#{entry.url}" target="_blank">#{entry.title}</a>
-			</ui:define>
-		</ui:decorate>
+		<ui:decorate template="./templates/linkTemplate.xhtml" />
 		
-		<img src="/WhiteIt/img/message.png" alt="message" height="45px"
-			style="float: left; margin: 0 25px 0 68px;" />
-
-		<h1><h:outputText
-			value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" /></h1>
-
-
 		<c:if test="#{userBean.loggedIn}">
 			<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin: 0 5px 0 135px;" />
 			<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
