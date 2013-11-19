@@ -49,7 +49,7 @@ public class EntryBean extends BaseBean {
 	}
 
 	public String getCommentCountByEntryId(String id) {
-		return Integer.toString(Logic.entry().getCommentsByEntry(getEntryById(id)).size());
+		return Integer.toString(Logic.entry().getCommentsCountByEntry(getEntryById(id)));
 	}
 
 	public Comment rateEntry(/*Entry ratedEntry, User user, String text*/) {

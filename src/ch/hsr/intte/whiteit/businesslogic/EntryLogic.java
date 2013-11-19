@@ -54,5 +54,13 @@ public class EntryLogic  extends Logic{
 		return e.getRatedByComments();
 	}
 	
+	public int getCommentsCountByEntry(Entry e) {
+		int commentsCount = e.getRatedByComments().size();
+		for(Entry entry : e.getRatedByComments()){
+			commentsCount += getCommentsCountByEntry(entry);
+		}
+		return commentsCount;
+	}
+	
 	EntryLogic() {}
 }
