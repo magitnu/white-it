@@ -175,6 +175,11 @@ a:hover.downVote {
 	padding-top: 15px;
 }
 
+.greyForm {
+	margin-left:-100px;
+	background-color: lightgrey;
+}
+
 /* Elements */
 h1 {
 	margin-top: 0px;
