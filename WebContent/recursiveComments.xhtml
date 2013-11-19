@@ -9,15 +9,15 @@
 		<ui:define name="votesAndScore">
 			<h:form name="form">
 				<h:commandLink styleClass="upVote" update=":form">
-					<f:param name="id" value="#{entry.id}" />
-					<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
+					<f:param name="id" value="#{comment.id}" />
+					<f:ajax event="click" listener="#{entryBean.voteUp(comment.id)}"
 						render="numberOfVotes" />
 				</h:commandLink>
 				<h:outputText styleClass="score" id="numberOfVotes"
-					value="#{entry.score}" />
+					value="#{comment.score}" />
 				<h:commandLink styleClass="downVote">
-					<f:param name="id" value="#{entry.id}" />
-					<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
+					<f:param name="id" value="#{comment.id}" />
+					<f:ajax event="click" listener="#{entryBean.voteDown(comment.id)}"
 						render="numberOfVotes" />
 				</h:commandLink>
 			</h:form>
