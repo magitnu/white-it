@@ -33,15 +33,15 @@
 				<a href="#{entry.url}" target="_blank">#{entry.title}</a>
 			</ui:define>
 		</ui:decorate>
-		<br />
 		<img src="/WhiteIt/img/message.png" alt="message" height="45px"
-			style="float: left; margin-right: 5px;" />
-		<h:outputText
-			value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" />
+			style="float: left; margin: 0 25px 0 68px;" />
 
-		<br />
+		<h1><h:outputText
+			value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" /></h1>
+
+
 		<c:if test="#{userBean.loggedIn}">
-			<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin-right: 5px;" />
+			<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin: 0 5px 0 135px;" />
 			<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
 			<div class="replyBox" style="display:none;">
 				<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
@@ -57,6 +57,7 @@
 
 			</div>
 		</c:if>
+		<br /><br /><br />
 		#{userBean.resetLeftMargin()}
 		<c:forEach items="#{entry.ratedByComments}" var="comment">
 			<ui:include src="recursiveComments.xhtml" />
