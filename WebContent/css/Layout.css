@@ -146,6 +146,7 @@ a:hover.upVote {
 	float: left;
 	margin-bottom: 30px;
 	margin-top: 10px;
+	position:relative;
 }
 
 .replyBox textarea {

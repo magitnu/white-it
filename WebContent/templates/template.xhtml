@@ -87,7 +87,7 @@
         					<h:outputLabel for="url" value="URL" />
 							<h:inputText id="url" value="#{entryBean.linkUrl}" required="true" label="title"/>
 							<span/>
-							<h:commandButton id="create" value="Create" action="#{entryBean.createLink}">
+							<h:commandButton id="create" value="Create" action="${entryBean.createLink}">
 								<f:param name="user" value="#{userBean.username}" />
 							</h:commandButton>
 						</h:panelGrid>

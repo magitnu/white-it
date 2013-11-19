@@ -4,9 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-
-	<ui:decorate template="./templates/commentTemplate.xhtml">
-		<ui:define name="votesAndScore">
+	<div class="commentBox">
+		<div class="votesAndScore">
 			<h:form name="form">
 				<h:commandLink styleClass="upVote" update=":form">
 					<f:param name="id" value="#{comment.id}" />
@@ -21,24 +20,36 @@
 						render="numberOfVotes" />
 				</h:commandLink>
 			</h:form>
-		</ui:define>
-		<ui:define name="commentDescription"> #{comment.createdString}</ui:define>
-		<ui:define name="commentText"> #{comment.text}</ui:define>
-	</ui:decorate>
-
-	<c:choose>
-		<c:when test="#{comment.hasComments}">
-			<c:if test="#{comment.instanceOfComment}">
-			#{userBean.raiseLeftMargin()}
-		</c:if>
+		</div>
+		<div class="commentDescription">
+			<b>#{comment.createdString}</b>
+		</div>
+		
+		<div class="commentText">
+			<p>#{comment.text}</p>
+			<c:choose>
+				<c:when test="#{userBean.loggedIn}">
+					<img src="/WhiteIt/img/message.png" alt="reply" height="20px" style="float: left; margin-right: 5px;" />
+					<a href="" id="replyLink" onclick="displayCommentBox(this);">reply</a>
+					<div class="replyBox" style="display: none">
+									<img src="/WhiteIt/img/message.png" alt="message" height="85px" style="float: left; margin-right: 5px;" />
+						<h:form>
+							<h:inputTextarea value="#{entryBean.commentText}" />
+		
+							<h:commandButton value="Comment" action="${entryBean.rateEntry}">
+								<f:param name="ratedEntry" value="#{comment.id}" />
+								<f:param name="user" value="#{userBean.username}" />
+							</h:commandButton>
+						</h:form>
+					</div>
+				</c:when>
+			</c:choose>
+		</div>
+		
+		<div class="subcomments" style="margin-left: 60px">
 			<c:forEach items="#{comment.ratedByComments}" var="comment">
 				<ui:include src="recursiveComments.xhtml" />
 			</c:forEach>
-		#{userBean.resetLeftMargin()}
-	</c:when>
-		<c:otherwise>
-
-		</c:otherwise>
-	</c:choose>
-
+		</div>
+	</div>
 </ui:composition>

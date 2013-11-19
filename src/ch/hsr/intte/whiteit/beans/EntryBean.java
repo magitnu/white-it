@@ -7,7 +7,6 @@ import java.util.UUID;
 
 import javax.faces.context.FacesContext;
 
-import ch.hsr.intte.whiteit.businesslogic.Helper;
 import ch.hsr.intte.whiteit.businesslogic.Logic;
 import ch.hsr.intte.whiteit.entities.Comment;
 import ch.hsr.intte.whiteit.entities.Entry;
@@ -18,22 +17,7 @@ public class EntryBean extends BaseBean {
 	private String commentText;
 	private String linkTitle;
 	private String linkUrl;
-	
-	private UUID getRequestId() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String, String> paramMap = context.getExternalContext()
-				.getRequestParameterMap();
-		if (paramMap.containsKey("id")) {
-			return UUID.fromString(paramMap.get("id"));
-		} else {
-			return null;
-		}
-	}
-	
-	private UUID getIdFromString(String id){
-		return UUID.fromString(id);
-	}
-	
+
 	public void voteUp(String id) {
 		Logic.entry().voteUp(Logic.entity().getEntryById(UUID.fromString(id)));
 	}
@@ -51,7 +35,11 @@ public class EntryBean extends BaseBean {
 	}
 
 	public String getCommentCountByEntryId(String id) {
-		return Integer.toString(Logic.entry().getCommentsCountByEntry(getEntryById(id)));
+		try {
+		return Integer.toString(Logic.entry().getCommentsCountByEntry(Logic.entity().getEntryById(UUID.fromString(id))));
+		} catch (Exception e) {
+			return "0";
+		}
 	}
 
 	public void rateEntry() {
@@ -65,7 +53,6 @@ public class EntryBean extends BaseBean {
 		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Logic.entry().createLink(user, getLinkUrl(), getLinkTitle());
-		//return Logic.entry().createLink(user, url, title);
 	}
 	
 	public String getLinkTitle() {
@@ -82,14 +69,6 @@ public class EntryBean extends BaseBean {
 
 	public void setLinkUrl(String linkUrl) {
 		this.linkUrl = linkUrl;
-	}
-
-	public Comment getCommentById() {
-		return Logic.entity().getCommentById(getRequestId());
-	}
-	
-	public Entry getEntryById(String id) {
-		return Logic.entity().getEntryById(getIdFromString(id));
 	}
 
 	public String getCommentText() {

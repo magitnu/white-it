@@ -58,8 +58,7 @@
 
 			</div>
 		</c:if>
-		<br /><br /><br />
-		#{userBean.resetLeftMargin()}
+		
 		<c:forEach items="#{entry.ratedByComments}" var="comment">
 			<ui:include src="recursiveComments.xhtml" />
 		</c:forEach>

@@ -20,4 +20,10 @@ public abstract class Logic {
 			_userLogic = new UserLogic();
 		return _userLogic;
 	}	
+	private static HelperLogic _helperLogic;
+	public static HelperLogic helper() {
+		if(_helperLogic == null)
+			_helperLogic = new HelperLogic();
+		return _helperLogic;
+	}	
 }
