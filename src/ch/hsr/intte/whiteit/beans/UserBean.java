@@ -1,9 +1,14 @@
 package ch.hsr.intte.whiteit.beans;
 
+import java.io.IOException;
+import java.util.UUID;
+
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import ch.hsr.intte.whiteit.businesslogic.Helper;
 import ch.hsr.intte.whiteit.businesslogic.Logic;
+import ch.hsr.intte.whiteit.entities.Entry;
 import ch.hsr.intte.whiteit.entities.User;
 
 public class UserBean extends BaseBean {
@@ -11,6 +16,7 @@ public class UserBean extends BaseBean {
 	private String username;
 	private String password;
 	private String passwordMatch;
+	private Entry currentEntry = null;
 	
 //	Folgendes braucht es fuer Comments. Sollen wir das in ein eigenes Bean tun?
 	public Integer leftMargin=0;
@@ -112,5 +118,21 @@ public class UserBean extends BaseBean {
 
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
+	}
+
+	public Entry getCurrentEntry() {
+		return currentEntry;
+	}
+
+	public void setCurrentEntry(Entry currentEntry) {
+		this.currentEntry = currentEntry;
+	}
+	
+	public void showEntry(String entryId) {
+		currentEntry = Logic.entity().getEntryById(UUID.fromString(entryId));
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/WhiteIt/faces/linkDetail.xhtml");
+		} catch (IOException e) {
+		}
 	}
 }

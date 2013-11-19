@@ -11,7 +11,7 @@
 
 
 	<ui:define name="content">
-		<c:set var="entry" value="#{entryBean.linkById}" />
+		<c:set var="entry" value="#{userBean.currentEntry}" />
 		<ui:decorate template="./templates/linkTemplate.xhtml">
 			<ui:define name="votesAndScore">
 				<h:form name="form">
@@ -42,7 +42,6 @@
 					<p:inputTextarea value="${entryBean.commentText}" />
 					
 					<h:commandLink value="Comment" action="${entryBean.rateEntry}">
-						<f:param name="id" value="#{param['id']} " />
 						<f:param name="ratedEntry" value="#{entry.id}"/>
 						<f:param name="user" value="#{userBean.username}"/>
 						

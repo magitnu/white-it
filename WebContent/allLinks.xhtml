@@ -30,7 +30,7 @@
 				</ui:define>
 				<ui:define name="linkComments">
 					<h:form >
-						<h:commandLink value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" action="${entryBean.showEntry(entry.id)}">
+						<h:commandLink value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments" action="${userBean.showEntry(entry.id)}">
 							<f:param name="id" value="#{entry.id}"/>
 						</h:commandLink>
 					</h:form>
