@@ -108,6 +108,7 @@ public class EntityLogic extends Logic {
 			User u1 = new User("mobrist", "abc$123");
 			User u2 = new User("mscheube", "abc$123");
 			User u3 = new User("fschaefe", "abc$123");
+			User u4 = new User("a", "a");
 
 			Link l1 = new Link(sdf.parse("02.08.2013 08:15:49"), 15, 24, u1,
 					"This is why I have to miss some school days.",
@@ -118,6 +119,9 @@ public class EntityLogic extends Logic {
 			Link l3 = new Link(sdf.parse("14.09.2013 13:27:33"), 5, 2, u3,
 					"What'd you say to me, b*tch?",
 					"http://9gag.com/gag/ajrm8Zp");
+			Link l4 = new Link(sdf.parse("14.09.2013 13:27:33"), 5, 2, u3,
+					"You could say procrastination is in my genes",
+					"http://9gag.com/gag/aNepx2A");
 
 			Comment c1 = new Comment(sdf.parse("04.08.2013 12:52:14"), 4, 2,
 					u1, l1, "Sweet");
@@ -149,10 +153,12 @@ public class EntityLogic extends Logic {
 			users.put(u1.getId(), u1);
 			users.put(u2.getId(), u2);
 			users.put(u3.getId(), u3);
+			users.put(u4.getId(), u4);
 
 			links.put(l1.getId(), l1);
 			links.put(l2.getId(), l2);
 			links.put(l3.getId(), l3);
+			links.put(l4.getId(), l4);
 
 			comments.put(c1.getId(), c1);
 			comments.put(c2.getId(), c2);

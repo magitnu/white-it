@@ -46,10 +46,10 @@
 				replyBoxes[i].style.display = 'none';
 			}
 
-			if (commentElement.nextElementSibling.style.display != 'block') {
-				commentElement.nextElementSibling.style.display = 'block';
+			if (commentElement.parentElement.nextElementSibling.style.display != 'block') {
+				commentElement.parentElement.nextElementSibling.style.display = 'block';
 			} else {
-				commentElement.nextElementSibling.style.display = 'none';
+				commentElement.parentElement.nextElementSibling.style.display = 'none';
 			}
 
 		}

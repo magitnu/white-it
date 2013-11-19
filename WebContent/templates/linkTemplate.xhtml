@@ -7,8 +7,8 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 	<div class="linkBox">
-		<h:form name="form">
-			<div class="votesAndScore">
+		<div class="votesAndScore">
+			<h:form name="form">
 				<h:commandLink styleClass="upVote" update=":form">
 					<f:param name="id" value="#{entry.id}" />
 					<f:ajax event="click" listener="#{entryBean.voteUp(entry.id)}"
@@ -21,48 +21,49 @@
 					<f:ajax event="click" listener="#{entryBean.voteDown(entry.id)}"
 						render="numberOfVotes" />
 				</h:commandLink>
-			</div>
-			<div class="linkTitle">
-				<h1>
-					<a href="#{entry.url}" target="_blank">#{entry.title}</a>
-				</h1>
-				<div class="commentDescription">
-					<span class="bold greyedOut">#{entry.createdString}</span>
-					<div>
-						<c:choose>
-							<c:when test="#{detail}">
-								<c:if test="#{userBean.loggedIn}">
-									<div class="replyLink greyedOut">
-										<a onclick="displayCommentBox(this);">reply</a>
-									</div>
-									<div class="replyBox" style="display: none;">
-										<img src="/WhiteIt/img/message.png" alt="message"
-											height="85px" style="float: left; margin-right: 5px;" />
-										<h:form class="greyForm">
+			</h:form>
+		</div>
+		<div class="linkTitle">
+			<h1>
+				<a href="#{entry.url}" target="_blank">#{entry.title}</a>
+			</h1>
+			<div class="commentDescription">
+				<span class="bold greyedOut">#{entry.createdString}</span>
+				<div>
+					<c:choose>
+						<c:when test="#{detail}">
+							<c:if test="#{userBean.loggedIn}">
+								<div class="replyLink greyedOut">
+									<a onclick="displayCommentBox(this);">reply</a>
+								</div>
+								<div class="replyBox" style="display: none;">
+									<img src="/WhiteIt/img/message.png" alt="message" height="85px"
+										style="float: left; margin-right: 5px;" />
+									<h:form class="greyForm">
 
-											<h:inputTextarea value="#{entryBean.commentText}" />
+										<h:inputTextarea value="#{entryBean.commentText}" />
 
-											<h:commandButton value="Comment"
-												action="${entryBean.rateEntry}">
-												<f:param name="ratedEntry" value="#{entry.id}" />
-												<f:param name="user" value="#{userBean.username}" />
-											</h:commandButton>
-										</h:form>
-
-									</div>
-								</c:if>
-							</c:when>
-							<c:otherwise>
+										<h:commandButton value="Comment"
+											action="${entryBean.rateEntry}">
+											<f:param name="ratedEntry" value="#{entry.id}" />
+											<f:param name="user" value="#{userBean.username}" />
+										</h:commandButton>
+									</h:form>
+								</div>
+							</c:if>
+						</c:when>
+						<c:otherwise>
+							<h:form>
 								<h:commandLink
 									value="#{entryBean.getCommentCountByEntryId(entry.id)} Comments"
 									action="${userBean.showEntry(entry.id)}">
 									<f:param name="id" value="#{entry.id}" />
 								</h:commandLink>
-							</c:otherwise>
-						</c:choose>
-					</div>
+							</h:form>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
-		</h:form>
+		</div>
 	</div>
 </ui:composition>
