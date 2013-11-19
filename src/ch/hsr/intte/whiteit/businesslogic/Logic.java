@@ -14,26 +14,10 @@ public abstract class Logic {
 			_entryLogic = new EntryLogic();
 		return _entryLogic;
 	}
-	
-	private static SessionLogic _sessionLogic;
-	public static SessionLogic session() {
-		if(_sessionLogic == null)
-			_sessionLogic = new SessionLogic();
-		return _sessionLogic;
-	}
-	
 	private static UserLogic _userLogic;
 	public static UserLogic user() {
 		if(_userLogic == null)
 			_userLogic = new UserLogic();
 		return _userLogic;
-	}
-	
-	private static ValidationLogic _validationLogic;
-	public static ValidationLogic validation() {
-		if(_validationLogic == null)
-			_validationLogic = new ValidationLogic();
-		return _validationLogic;
-	}
-	
+	}	
 }
