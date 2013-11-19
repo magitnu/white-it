@@ -17,7 +17,7 @@
 					</div>
 		
 					<div id="userOptions">
-						hi <h:outputText value="#{userBean.name}"></h:outputText>
+						<h:outputText value="Hi #{userBean.name} you are logged in!"></h:outputText>
 					</div>
 				</div>
 			</c:when>
@@ -25,10 +25,12 @@
 			<c:otherwise>
 				<div id="guestMenu">
 					<h:form id="formLogin">
+						<h:outputLabel for="username" value="username" />
 						<p:inputText id="username" value="#{userBean.username}" />
+						<h:outputLabel for="password" value="password" />
 						<p:password id="password" value="#{userBean.password}" />
-						<p:commandButton value="login" id="login" action="#{userBean.login}" />
-						<p:commandButton value="Register" onclick="displayRegisterBox()" />
+						<p:commandLink value="Login" id="login" action="#{userBean.login}" styleClass="headerlinks" />
+						<p:commandLink value="Register" id="register" onclick="displayRegisterBox()" styleClass="headerlinks" />
 					</h:form>
 					
 				</div>
