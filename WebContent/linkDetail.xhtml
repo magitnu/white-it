@@ -45,9 +45,9 @@
 				<img src="/WhiteIt/img/message.png" alt="message" height="85px"
 					style="float: left; margin-right: 5px;" />
 				<h:form>
-					<p:inputTextarea value="${entryBean.commentText}" />
+					<h:inputTextarea value="#{entryBean.commentText}"></h:inputTextarea>
 
-					<h:commandLink value="Comment" action="${entryBean.rateEntry}">
+					<h:commandLink value="Comment" action="#{entryBean.rateEntry}">
 						<f:param name="ratedEntry" value="#{entry.id}" />
 						<f:param name="user" value="#{userBean.username}" />
 

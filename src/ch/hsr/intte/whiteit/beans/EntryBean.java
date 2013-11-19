@@ -13,7 +13,6 @@ import ch.hsr.intte.whiteit.entities.Entry;
 import ch.hsr.intte.whiteit.entities.Link;
 import ch.hsr.intte.whiteit.entities.User;
 
-
 public class EntryBean extends BaseBean {
 	private String commentText;
 	
@@ -52,11 +51,12 @@ public class EntryBean extends BaseBean {
 		return Integer.toString(Logic.entry().getCommentsCountByEntry(getEntryById(id)));
 	}
 
-	public Comment rateEntry(/*Entry ratedEntry, User user, String text*/) {
+	public String rateEntry(/*Entry ratedEntry, User user, String text*/) {
 		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Entry ratedEntry = Logic.entity().getEntryById(UUID.fromString(paramMap.get("ratedEntry")));
-		return Logic.entry().rateEntry(ratedEntry, user, getCommentText());
+		Logic.entry().rateEntry(ratedEntry, user, getCommentText());
+		return "asdf";
 	}
 
 	public Link createLink(User user, String url, String title) {
