@@ -15,6 +15,7 @@
 <script type="text/javascript" src="http://www.primefaces.org/showcase/javax.faces.resource/jquery/jquery-plugins.js.jsf?ln=primefaces&amp;v=4.0"/>
 <script type="text/javascript" src="http://www.primefaces.org/showcase/javax.faces.resource/primefaces.js.jsf?ln=primefaces&amp;v=4.0"/>
 <script>
+//<![CDATA[
 	function displaySubmitLinkBox() {
 		document.getElementById("registerBox").style.display = 'none';
 
@@ -36,6 +37,11 @@
 	}
 
 	function displayCommentBox(commentElement) {
+		var replyBoxes = document.getElementsByClassName('replyBox');
+		for(var i = 0; i < replyBoxes.length; i++) {
+			replyBoxes[i].style.display = 'none';
+		}
+
 		if (commentElement.nextElementSibling.style.display != 'block'){
 			commentElement.nextElementSibling.style.display = 'block';
 		} else {
@@ -43,6 +49,7 @@
 		}
 		
 	}
+//]]>
 </script>
 
 
