@@ -41,17 +41,19 @@
 		}
 
 		function displayCommentBox(commentElement) {
+			var thisBox = commentElement.parentElement.nextElementSibling;
 			var replyBoxes = document.getElementsByClassName('replyBox');
-			for ( var i = 0; i < replyBoxes.length; i++) {
-				replyBoxes[i].style.display = 'none';
-			}
-
-			if (commentElement.parentElement.nextElementSibling.style.display != 'block') {
-				commentElement.parentElement.nextElementSibling.style.display = 'block';
+			if (thisBox.style.display != 'block') {
+				for ( var i = 0; i < replyBoxes.length; i++) {
+					replyBoxes[i].style.display = 'none';
+				}
+				thisBox.style.display = 'block';
 			} else {
-				commentElement.parentElement.nextElementSibling.style.display = 'none';
+				for ( var i = 0; i < replyBoxes.length; i++) {
+					replyBoxes[i].style.display = 'none';
+				}
+				thisBox.style.display = 'none';
 			}
-
 		}
 		//]]>
 	</script>
@@ -89,10 +91,12 @@
 						<h:panelGrid columns="2" id="matchGrid">
 							<h:outputLabel for="title" value="Title" />
 							<h:inputText id="title" value="#{entryBean.linkTitle}"
-								label="title" requiredMessage="true" styleClass="ui-inputfield ui-state-default" />
+								label="title" requiredMessage="true"
+								styleClass="ui-inputfield ui-state-default" />
 							<h:outputLabel for="url" value="URL" />
 							<h:inputText id="url" value="#{entryBean.linkUrl}"
-								required="true" label="title" styleClass="ui-inputfield ui-state-default" />
+								required="true" label="title"
+								styleClass="ui-inputfield ui-state-default" />
 						</h:panelGrid>
 						<h:commandLink id="create" value="Create"
 							action="${entryBean.createLink}" styleClass="headerlinks">
