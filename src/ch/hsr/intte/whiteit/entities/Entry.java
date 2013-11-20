@@ -90,6 +90,9 @@ public abstract class Entry extends BaseEntity{
 		return ratedByComments;
 	}
 	
+	public boolean hasComments() {
+		return !ratedByComments.isEmpty();
+	}
 
 	public void setRatedByComments(List<Comment> ratedBy) {
 		this.ratedByComments = ratedBy;

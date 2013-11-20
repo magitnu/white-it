@@ -47,12 +47,14 @@ public class EntryBean extends BaseBean {
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Entry ratedEntry = Logic.entity().getEntryById(UUID.fromString(paramMap.get("ratedEntry")));
 		Logic.entry().rateEntry(ratedEntry, user, getCommentText());
+		commentText = "";
 	}
 
-	public void createLink() {
+	public String createLink() {
 		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Logic.entry().createLink(user, getLinkUrl(), getLinkTitle());
+		return "/Whiteit/";
 	}
 	
 	public String getLinkTitle() {

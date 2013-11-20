@@ -8,14 +8,15 @@ import ch.hsr.intte.whiteit.entities.Entry;
 import ch.hsr.intte.whiteit.entities.Link;
 import ch.hsr.intte.whiteit.entities.User;
 
-public class EntryLogic  extends Logic{
+public class EntryLogic extends Logic {
 	public int voteUp(Entry e) {
 		return e.voteUp();
 	}
+
 	public int voteDown(Entry e) {
 		return e.voteDown();
 	}
-	
+
 	public Comment rateEntry(Entry ratedEntry, User user, String text) {
 		Comment c = new Comment();
 		c.setText(text);
@@ -26,6 +27,9 @@ public class EntryLogic  extends Logic{
 	}
 
 	public Link createLink(User user, String url, String title) {
+		if (!url.toLowerCase().startsWith("http://")) {
+			url = "http://" + url;
+		}
 		Link l = new Link();
 		l.setTitle(title);
 		l.setUrl(url);
@@ -33,7 +37,7 @@ public class EntryLogic  extends Logic{
 		Logic.entity().addLink(l);
 		return l;
 	}
-	
+
 	public Comment createComment(String username, Entry entry, String text) {
 		System.out.println("inside creating Comment");
 		Comment c = new Comment();
@@ -45,7 +49,7 @@ public class EntryLogic  extends Logic{
 		entry.addRatedByComment(c);
 		return c;
 	}
-	
+
 	public List<Link> getAllLinks() {
 		return (List<Link>) Logic.entity().getAllLinks();
 	}
@@ -53,14 +57,15 @@ public class EntryLogic  extends Logic{
 	public List<Comment> getCommentsByEntry(Entry e) {
 		return e.getRatedByComments();
 	}
-	
+
 	public int getCommentsCountByEntry(Entry e) {
 		int commentsCount = e.getRatedByComments().size();
-		for(Entry entry : e.getRatedByComments()){
+		for (Entry entry : e.getRatedByComments()) {
 			commentsCount += getCommentsCountByEntry(entry);
 		}
 		return commentsCount;
 	}
-	
-	EntryLogic() {}
+
+	EntryLogic() {
+	}
 }

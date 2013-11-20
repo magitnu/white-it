@@ -64,7 +64,7 @@
 		<div id="header">
 			<div id="headerLogo">
 				<h1>
-					<a href="/WhiteIt/faces/allLinks.xhtml">whiteit</a>
+					<a href="/WhiteIt/">whiteit</a>
 				</h1>
 			</div>
 
@@ -89,16 +89,15 @@
 						<h:panelGrid columns="2" id="matchGrid">
 							<h:outputLabel for="title" value="Title" />
 							<h:inputText id="title" value="#{entryBean.linkTitle}"
-								label="title" requiredMessage="true" />
+								label="title" requiredMessage="true" styleClass="ui-inputfield ui-state-default" />
 							<h:outputLabel for="url" value="URL" />
 							<h:inputText id="url" value="#{entryBean.linkUrl}"
-								required="true" label="title" />
-							<span />
-							<h:commandButton id="create" value="Create"
-								action="${entryBean.createLink}">
-								<f:param name="user" value="#{userBean.username}" />
-							</h:commandButton>
+								required="true" label="title" styleClass="ui-inputfield ui-state-default" />
 						</h:panelGrid>
+						<h:commandLink id="create" value="Create"
+							action="${entryBean.createLink}" styleClass="headerlinks">
+							<f:param name="user" value="#{userBean.username}" />
+						</h:commandLink>
 					</h:form>
 				</ui:define>
 			</ui:decorate>
