@@ -202,6 +202,7 @@ a:hover.upVote {
 	width: 400px;
 	height: 130px;
 	font-family: 'Average Sans',sans-serif;
+	font-size: 1em;
 	padding: 5px;
 	resize: none;
 }
