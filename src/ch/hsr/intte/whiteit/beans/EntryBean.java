@@ -54,6 +54,8 @@ public class EntryBean extends BaseBean {
 		Map<String, String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		User user = Logic.user().getUserByUsername(paramMap.get("user"));
 		Logic.entry().createLink(user, getLinkUrl(), getLinkTitle());
+		linkTitle = "";
+		linkUrl = "";
 		return "/Whiteit/";
 	}
 	
